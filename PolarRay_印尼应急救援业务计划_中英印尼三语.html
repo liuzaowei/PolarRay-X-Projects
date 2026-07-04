@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PolarRay x PHAS | Indonesia Emergency Rescue | 中英印尼三语</title>
+<style>
+
+:root{
+  --red:#E23A2E;--red-d:#B82318;--red-l:#fdecea;
+  --ink:#1a1d24;--ink2:#3d434f;--muted:#6b7280;
+  --line:#e7e9ee;--bg:#fff;--bg2:#f6f7f9;--bg3:#f0f2f5;
+  --blue:#1f6feb;--green:#1a9e63;--purple:#6b5ce7;
+  --shadow:0 1px 3px rgba(20,24,36,.06),0 8px 24px rgba(20,24,36,.06);
+  --radius:14px;color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg2);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--red-d);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* Trilingual display */
+.zh,.en,.id{display:none}
+body.lang-zh .zh{display:inline}
+body.lang-zh .zh.blk{display:block}
+body.lang-en .en{display:inline}
+body.lang-en .en.blk{display:block}
+body.lang-id .id{display:inline}
+body.lang-id .id.blk{display:block}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:12px;height:60px}
+nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--ink);font-size:17px;white-space:nowrap}
+nav .links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+nav .links a{color:var(--ink2);padding:7px 9px;border-radius:8px;font-size:12px;font-weight:600;white-space:nowrap}
+nav .links a:hover{background:var(--bg3);text-decoration:none;color:var(--red-d)}
+.langbtn-wrap{display:flex;gap:4px;margin-left:8px}
+.langbtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-weight:700;font-size:12px;cursor:pointer;color:var(--ink);white-space:nowrap;transition:all .15s}
+.langbtn:hover{border-color:var(--red);color:var(--red-d)}
+.langbtn.active{background:var(--red);color:#fff;border-color:var(--red)}
+@media(max-width:980px){nav .links{display:none}}
+
+header.hero{background:radial-gradient(1200px 400px at 80% -10%,rgba(226,58,46,.10),transparent 60%),linear-gradient(180deg,#fff,#fbfbfc);border-bottom:1px solid var(--line);padding:52px 0 46px}
+.logo-lockup{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.logo-lockup .name{font-size:22px;font-weight:800;letter-spacing:1px}
+.logo-lockup .name small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:2px}
+.kicker{display:inline-block;background:var(--red-l);color:var(--red-d);font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+header.hero h1{font-size:38px;line-height:1.25;font-weight:800;letter-spacing:-.5px;margin-bottom:16px}
+header.hero h1 .hl{color:var(--red)}
+header.hero p.lead{font-size:18px;color:var(--ink2);max-width:840px}
+.meta-row{display:flex;gap:24px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px dashed var(--line)}
+.meta-row .m{font-size:13px;color:var(--muted)}.meta-row .m b{display:block;font-size:15px;color:var(--ink);font-weight:700;margin-top:2px}
+@media(max-width:680px){header.hero h1{font-size:28px}}
+
+section{padding:50px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sec-head .no{font-size:14px;font-weight:800;color:var(--red)}
+.sec-head h2{font-size:26px;font-weight:800;letter-spacing:-.3px}
+.sec-sub{color:var(--muted);margin-bottom:28px;font-size:15px}
+h3{font-size:18px;font-weight:750;margin:30px 0 12px}
+p{margin-bottom:14px;color:var(--ink2)}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.stat{padding:20px}.stat .big{font-size:28px;font-weight:800;color:var(--red);line-height:1.05}.stat .lab{font-size:13px;color:var(--muted);margin-top:8px}
+
+.jv{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin:8px 0 6px}
+@media(max-width:680px){.jv{grid-template-columns:1fr}}
+.party{padding:22px;border-radius:var(--radius);border:1px solid var(--line);background:#fff}
+.party h4{font-size:17px;font-weight:800;margin-bottom:4px}
+.party .tag{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px}
+.party ul{margin:6px 0 0 18px}.party li{margin-bottom:6px;font-size:14px;color:var(--ink2)}
+.party.lead-p{border-color:var(--red);box-shadow:0 0 0 3px var(--red-l)}
+.jv-mid{display:flex;align-items:center;justify-content:center;padding:0 18px;color:var(--muted);font-size:26px}
+@media(max-width:680px){.jv-mid{padding:14px 0}}
+
+.scn-band{display:flex;align-items:center;gap:10px;margin:34px 0 16px;font-weight:800;font-size:16px}
+.scn-band .dot{width:9px;height:9px;border-radius:50%;background:var(--red)}
+
+.prod{display:flex;flex-direction:column;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.prod:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(20,24,36,.12)}
+.prod .imgbox{position:relative;aspect-ratio:4/3;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.prod .imgbox img{width:100%;height:100%;object-fit:contain;padding:10px}
+.prod .fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;background:linear-gradient(135deg,#eef0f4,#e2e6ee);color:var(--ink2);font-weight:700;font-size:14px}
+.prod .ob{position:absolute;top:8px;left:8px;font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:6px;background:rgba(226,58,46,.92);color:#fff}
+.prod .body{padding:15px 15px 17px;display:flex;flex-direction:column;flex:1}
+.prod h4{font-size:15.5px;font-weight:750;line-height:1.35;margin-bottom:5px}
+.prod .brandline{font-size:12px;color:var(--muted);margin-bottom:9px}
+.prod .specs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:11px}
+.prod .specs .spec{font-size:11px;background:var(--bg3);color:var(--ink2);padding:3px 7px;border-radius:6px;font-weight:600}
+.prod .use{font-size:12.5px;color:var(--ink2);background:var(--red-l);border-radius:8px;padding:9px 11px;margin-bottom:10px}
+.prod .pricerow{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:12px}
+.prod .links{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:8px 13px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.btn:hover{border-color:var(--red);color:var(--red-d);text-decoration:none}
+.btn.primary{background:var(--red);color:#fff;border-color:var(--red)}.btn.primary:hover{background:var(--red-d);color:#fff}
+
+.tablewrap{overflow-x:auto;margin:6px 0 8px;border-radius:var(--radius);border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;min-width:560px}
+thead th{background:var(--bg3);text-align:left;padding:11px 13px;font-weight:750;font-size:12.5px;color:var(--ink);white-space:nowrap}
+tbody td{padding:10px 13px;border-top:1px solid var(--line);color:var(--ink2);vertical-align:top}
+tbody tr:hover td{background:#fcfcfd}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tfoot td{padding:12px 13px;border-top:2px solid var(--ink);font-weight:800;color:var(--ink);background:var(--bg2)}
+.tagcell{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.t-spon{background:#e6f6ee;color:var(--green)}.t-jv{background:#eaf1fd;color:var(--blue)}
+
+.pack{padding:18px}.pack h4{font-size:16px;font-weight:800;margin-bottom:8px;color:var(--red-d)}
+.pack .pk-items{font-size:13px;color:var(--ink2);margin-bottom:10px}
+.pack .pk-val{font-size:12.5px;color:var(--ink);background:var(--bg2);border-radius:8px;padding:9px 11px;border-left:3px solid var(--red)}
+
+.flow{display:grid;grid-template-columns:repeat(5,1fr);margin-top:10px}
+@media(max-width:760px){.flow{grid-template-columns:1fr;gap:12px}}
+.flow .step{position:relative;padding:20px 12px;text-align:center}
+.flow .step .n{width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.flow .step h4{font-size:14px;margin-bottom:6px}.flow .step p{font-size:12px;color:var(--muted);margin:0}
+.flow .step:not(:last-child)::after{content:"\2192";position:absolute;right:-8px;top:34px;color:var(--line);font-size:20px;font-weight:800}
+@media(max-width:760px){.flow .step:not(:last-child)::after{content:"\2193";right:auto;left:50%;top:auto;bottom:-16px;transform:translateX(-50%)}}
+
+.callout{background:linear-gradient(135deg,var(--red-l),#fff);border:1px solid #f6d4d0;border-left:4px solid var(--red);border-radius:10px;padding:18px 20px;margin:18px 0}
+.callout b{color:var(--red-d)}
+.callout.green{background:linear-gradient(135deg,#e6f6ee,#fff);border-color:#c6e9d8;border-left-color:var(--green)}
+.callout.blue{background:linear-gradient(135deg,#eaf1fd,#fff);border-color:#c6d8f0;border-left-color:var(--blue)}
+.callout.purple{background:linear-gradient(135deg,#edeaff,#fff);border-color:#d4cdf5;border-left-color:var(--purple)}
+
+.day{margin-bottom:16px}
+.day .dh{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#2b3340,#3d4658);color:#fff;padding:12px 16px;border-radius:10px 10px 0 0;font-weight:800}
+.day .dh .badge{background:rgba(255,255,255,.16);padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.day .dh .sub{margin-left:auto;font-weight:500;font-size:12.5px;opacity:.85}
+.day .items{border:1px solid var(--line);border-top:none;border-radius:0 0 10px 10px;background:#fff}
+.ai{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line)}
+.ai:first-child{border-top:none}
+.ai .tm{padding:12px 16px;font-weight:700;font-size:13px;color:var(--red-d);background:var(--bg2)}
+.ai .ct{padding:12px 16px;font-size:14px}.ai .ct b{font-weight:700;color:var(--ink)}.ai .ct small{color:var(--muted);display:block;font-size:12.5px}
+@media(max-width:560px){.ai{grid-template-columns:84px 1fr}.ai .tm{font-size:12px;padding:10px}}
+
+.risk{padding:18px}.risk h4{display:flex;align-items:center;gap:8px;font-size:15px;margin-bottom:8px}
+.risk h4 .ic{width:26px;height:26px;border-radius:7px;background:var(--red-l);color:var(--red-d);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.risk p{font-size:13.5px;margin:0}.risk p .sol{color:var(--green);font-weight:700}
+
+.road{position:relative;margin-top:10px;padding-left:26px}
+.road::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.road .r{position:relative;margin-bottom:20px}
+.road .r::before{content:"";position:absolute;left:-23px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--red);border:2px solid #fff;box-shadow:0 0 0 2px var(--red-l)}
+.road .r .ph{font-size:12px;font-weight:800;color:var(--red)}
+.road .r h4{font-size:15.5px;margin:2px 0 4px}.road .r p{font-size:13.5px;margin:0;color:var(--ink2)}
+
+footer{padding:40px 0 60px;color:var(--muted);font-size:13px;text-align:center}
+footer .disc{max-width:820px;margin:14px auto 0;font-size:12px;line-height:1.6}
+
+.unit{padding:0;overflow:hidden}
+.unit .top{padding:15px 18px;background:linear-gradient(135deg,#2b3340,#3d4658);color:#fff}
+.unit .top .tier{font-size:11px;font-weight:800;letter-spacing:1px;opacity:.8}
+.unit .top h4{font-size:18px;margin-top:3px}
+.unit .bd{padding:15px 18px}
+.unit .row{font-size:13px;margin-bottom:9px;color:var(--ink2)}
+.unit .row b{color:var(--ink)}
+.unit .invest{font-size:14px;font-weight:800;color:var(--red-d);background:var(--red-l);border-radius:8px;padding:9px 12px;margin-top:6px}
+.unit .incl{font-size:12.5px;color:var(--green);font-weight:700;margin-top:8px}
+
+.proc{position:relative;margin-top:12px;padding-left:34px}
+.proc::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.proc .st{position:relative;margin-bottom:16px}
+.proc .st .num{position:absolute;left:-34px;top:-1px;width:25px;height:25px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.proc .st h4{font-size:15px;margin-bottom:2px}
+.proc .st p{font-size:13px;margin:0;color:var(--ink2)}
+
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:680px){.svc{grid-template-columns:1fr}}
+.svc .col h3{margin-top:0;display:flex;align-items:center;gap:8px}
+.svc .it{padding:11px 0;border-top:1px solid var(--line)}
+.svc .it:first-of-type{border-top:none}
+.svc .it b{font-size:14px}.svc .it span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+
+.t-sales tfoot td{color:var(--red-d)}
+
+.coop-detail{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+@media(max-width:680px){.coop-detail{grid-template-columns:1fr}}
+.coop-card{padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.coop-card h5{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.coop-card p{font-size:13px;color:var(--ink2);margin:0 0 8px}
+.coop-card ul{margin:0 0 0 16px}
+.coop-card li{font-size:13px;color:var(--ink2);margin-bottom:5px}
+
+.gtg-track{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+@media(max-width:900px){.gtg-track{grid-template-columns:1fr}}
+.gtg-card{padding:18px;border:1px solid var(--line);border-radius:10px;background:#fff;position:relative}
+.gtg-card .badge{position:absolute;top:-1px;right:-1px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:0 10px 0 8px}
+.gtg-card h5{font-size:15px;font-weight:800;margin-bottom:10px;color:var(--red-d)}
+.gtg-card ul{margin:0 0 0 18px}
+.gtg-card li{font-size:13px;color:var(--ink2);margin-bottom:6px}
+
+.strong-box{background:var(--bg2);border-radius:10px;padding:16px 20px;border-left:4px solid var(--red);margin:12px 0}
+.strong-box h4{font-size:15px;font-weight:800;margin-bottom:6px}
+.strong-box p{font-size:13px;color:var(--ink2);margin:0}
+.phase-row{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0}
+.phase-tag{background:var(--red);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px}
+
+</style>
+</head>
+<body class="lang-zh">
+<nav><div class="wrap">
+  <div class="brand">PolarRay <span style="color:var(--muted);font-weight:600">x</span> PHAS</div>
+  <div class="links"><a href="#summary"><span class="zh">概述</span><span class="en">Overview</span><span class="id">Ringkasan</span></a><a href="#structure"><span class="zh">合作模式</span><span class="en">Cooperation</span><span class="id">Kerja Sama</span></a><a href="#market"><span class="zh">市场需求</span><span class="en">Market</span><span class="id">Pasar</span></a><a href="#products"><span class="zh">产品目录</span><span class="en">Catalog</span><span class="id">Katalog</span></a><a href="#compare"><span class="zh">选型对比</span><span class="en">Compare</span><span class="id">Perbandingan</span></a><a href="#units"><span class="zh">方案套餐</span><span class="en">Kits</span><span class="id">Paket Solusi</span></a><a href="#service"><span class="zh">培训运维</span><span class="en">Training</span><span class="id">Pelatihan</span></a><a href="#process"><span class="zh">业务流程</span><span class="en">Process</span><span class="id">Proses</span></a><a href="#conf"><span class="zh">GTG研讨会</span><span class="en">GTG Forum</span><span class="id">Forum GTG</span></a><a href="#coop"><span class="zh">合作细节</span><span class="en">Coop Details</span><span class="id">Detail Kerja Sama</span></a><a href="#sales"><span class="zh">销售预估</span><span class="en">Forecast</span><span class="id">Perkiraan</span></a><a href="#model"><span class="zh">商业模式</span><span class="en">Model</span><span class="id">Model</span></a><a href="#risk"><span class="zh">风险对策</span><span class="en">Risks</span><span class="id">Risiko</span></a><a href="#roadmap"><span class="zh">行动计划</span><span class="en">Plan</span><span class="id">Rencana</span></a></div>
+  <div class="langbtn-wrap">    <button class="langbtn active" onclick="setLang('zh')" id="btn-zh">中文</button>    <button class="langbtn" onclick="setLang('en')" id="btn-en">EN</button>    <button class="langbtn" onclick="setLang('id')" id="btn-id">ID</button></div>
+</div></nav>
+<header class="hero"><div class="wrap">
+  <span class="kicker"><span class="zh">完整业务计划 · 2026（中英印尼三语）</span><span class="en">Full Business Plan · 2026 (Trilingual)</span><span class="id">Rencana Bisnis Lengkap · 2026 (Tiga Bahasa)</span></span>
+  <h1><span class="zh">印尼应急救援<br><span class="hl">解决方案 · 全流程业务计划</span></span><span class="en">Indonesia Emergency Rescue<br><span class="hl">Solutions · End-to-End Plan</span></span><span class="id">Penyelamatan Darurat Indonesia<br><span class="hl">Solusi · Rencana Lengkap</span></span></h1>
+  <p class="lead"><span class="zh">Pak Sumar 作为印尼业务主导方，PolarRay 作为中国资源与技术服务商，双方以深度业务合作方式共同推进印尼应急救援市场。PolarRay 不直接持股，而是通过设备供应、方案设计、技术培训与长期运维服务，为 Pak Sumar 的公司提供全方位支持。我们以政府间(GTG)技术交流会为切入，覆盖方案设计、设备供应、交付培训、长期维保的完整业务闭环。</span><span class="en">Pak Sumar leads as Indonesia business anchor; PolarRay serves as China resource &amp; technology service provider. Through deep business cooperation, PolarRay supports Pak Sumar&#x27;s company via equipment supply, solution design, technical training and long-term O&amp;M — without direct equity. We enter via a GTG technical forum and cover the full loop from solution design, equipment supply, delivery/training to long-term maintenance.</span><span class="id">Pak Sumar memimpin sebagai penggerak bisnis Indonesia; PolarRay berperan sebagai penyedia sumber daya &amp; teknologi China. Melalui kerja sama bisnis mendalam, PolarRay mendukung perusahaan Pak Sumar melalui pasokan peralatan, desain solusi, pelatihan teknis &amp; perawatan jangka panjang — tanpa kepemilikan langsung. Masuk melalui forum teknis GTG &amp; mencakup siklus penuh dari desain solusi, pasokan peralatan, pelatihan pengiriman hingga perawatan jangka panjang.</span></p>
+  <div class="meta-row">
+    <div class="m"><span class="zh">主导方</span><span class="en">Lead</span><span class="id">Pemimpin</span><b>Pak Sumar / PHAS</b></div>
+    <div class="m"><span class="zh">中国技术服务商</span><span class="en">China Tech Service</span><span class="id">Layanan Teknologi China</span><b>PolarRay</b></div>
+    <div class="m"><span class="zh">合作模式</span><span class="en">Structure</span><span class="id">Struktur</span><b><span class="zh">深度合作服务</span><span class="en">Deep Service Partnership</span><span class="id">Kemitraan Layanan</span></b></div>
+    <div class="m"><span class="zh">交付方式</span><span class="en">Delivery</span><span class="id">Pengiriman</span><b><span class="zh">方案+设备+培训+维保</span><span class="en">Solution+Equip+Train+O&amp;M</span><span class="id">Solusi+Alat+Latih+Rawat</span></b></div>
+    <div class="m"><span class="zh">切入方式</span><span class="en">Entry</span><span class="id">Masuk</span><b><span class="zh">GTG 技术交流会</span><span class="en">GTG Technical Forum</span><span class="id">Forum Teknis GTG</span></b></div>
+  </div>
+</div></header>
+<section id="summary"><div class="wrap">
+  <div class="sec-head"><span class="no">01</span><h2><span class="zh">执行摘要</span><span class="en">Executive Summary</span><span class="id">Ringkasan Eksekutif</span></h2></div>
+  <p class="sec-sub"><span class="zh">卖方案、卖设备、卖培训、卖长期维保——不是卖股权，是卖服务能力。</span><span class="en">Sell solutions, equipment, training and long-term maintenance — not equity, but service capability.</span><span class="id">Jual solusi, peralatan, pelatihan &amp; perawatan jangka panjang — bukan saham, tapi kemampuan layanan.</span></p>
+  <p><span class="zh">印尼地处火环与季风带，地震、海啸、火山、洪涝、滑坡与森林火灾频发，中央与地方应急部门对专业救援能力存在持续刚性需求。本计划以 <b>Pak Sumar 主导印尼市场、PolarRay 提供中国供应链与技术服务的合作分工</b>，通过设备供应、方案设计、培训赋能与长期维保服务，形成可持续的经常性收入。</span><span class="en">On the Ring of Fire and in a monsoon belt, Indonesia faces constant demand for professional rescue capability. With <b>Pak Sumar leading the Indonesian market and PolarRay providing China&#x27;s supply chain &amp; technology services</b>, we generate sustainable recurring revenue through equipment supply, solution design, training &amp; long-term maintenance.</span><span class="id">Di Cincin Api &amp; jalur monsoon, Indonesia menghadapi permintaan konstan untuk kemampuan penyelamatan profesional. Dengan <b>Pak Sumar memimpin pasar Indonesia &amp; PolarRay menyediakan rantai pasok &amp; layanan teknologi China</b>, kita menghasilkan pendapatan berulang berkelanjutan melalui pasokan peralatan, desain solusi, pelatihan &amp; perawatan jangka panjang.</span></p>
+  <p><span class="zh">落地从 GTG 技术交流会切入，贯通方案设计、设备供应、交付培训、长期维保的<b>完整业务闭环</b>。PolarRay 作为服务方，全力协助 Pak Sumar 的公司建立印尼领先的应急救援能力体系。</span><span class="en">Execution starts at the GTG technical forum and runs the <b>full business loop</b> through solution design, equipment supply, delivery/training, and long-term maintenance. PolarRay, as the service partner, fully assists Pak Sumar&#x27;s company in building Indonesia&#x27;s leading emergency rescue capability system.</span><span class="id">Pelaksanaan dimulai dari forum teknis GTG &amp; menjalankan <b>siklus bisnis penuh</b> melalui desain solusi, pasokan peralatan, pelatihan pengiriman &amp; perawatan jangka panjang. PolarRay, sebagai mitra layanan, sepenuhnya membantu perusahaan Pak Sumar membangun sistem kemampuan penyelamatan darurat terkemuka di Indonesia.</span></p>
+  <div class="grid g4" style="margin-top:24px">
+    <div class="card stat"><div class="big">5 <span class="zh">大场景</span><span class="en">scenarios</span><span class="id">skenario</span></div><div class="lab"><span class="zh">震/水/火/空中/保障全覆盖</span><span class="en">Quake/water/fire/air/support</span><span class="id">Gempa/air/api/udara/dukungan</span></div></div>
+    <div class="card stat"><div class="big">4 <span class="zh">级单元</span><span class="en">tiers</span><span class="id">tingkat</span></div><div class="lab"><span class="zh">班组→移动→中队→省级体系</span><span class="en">Squad→mobile→company→system</span><span class="id">Regu→mobile→kompi→sistem</span></div></div>
+    <div class="card stat"><div class="big"><span class="zh">全流程</span><span class="en">Full loop</span><span class="id">Siklus penuh</span></div><div class="lab"><span class="zh">方案→设备→交付→培训→维保</span><span class="en">Solution→equip→deliver→train→O&amp;M</span><span class="id">Solusi→alat→kirim→latih→rawat</span></div></div>
+    <div class="card stat"><div class="big"><span class="zh">经常性</span><span class="en">Recurring</span><span class="id">Berulang</span></div><div class="lab"><span class="zh">培训+维保=长期现金流</span><span class="en">Training+O&amp;M = long-term cash flow</span><span class="id">Pelatihan+perawatan = arus kas jangka panjang</span></div></div>
+  </div>
+</div></section>
+<section id="structure"><div class="wrap">
+  <div class="sec-head"><span class="no">02</span><h2><span class="zh">合作模式与服务架构</span><span class="en">Cooperation Model &amp; Service Structure</span><span class="id">Model Kerja Sama &amp; Struktur Layanan</span></h2></div>
+  <p class="sec-sub"><span class="zh">PolarRay 作为服务方，不持股、不控股，以深度技术合作与设备服务方式支持 Pak Sumar 的公司开拓印尼市场。</span><span class="en">PolarRay serves as a service partner without equity stake, supporting Pak Sumar&#x27;s company through deep technology cooperation and equipment services.</span><span class="id">PolarRay berperan sebagai mitra layanan tanpa saham, mendukung perusahaan Pak Sumar melalui kerja sama teknologi mendalam &amp; layanan peralatan.</span></p>
+  <div class="jv">
+    <div class="party lead-p"><span class="tag" style="background:#2b3340;color:#fff"><span class="zh">主导方 · LEAD</span><span class="en">LEAD</span><span class="id">Pemimpin</span></span>
+      <h4>PT Putra Hanraya Shankara (PHAS)</h4>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Pak Sumar</p>
+      <ul>
+        <li><span class="zh">政府关系与高层对接</span><span class="en">Government relations &amp; high-level access</span><span class="id">Relasi pemerintah &amp; akses tingkat tinggi</span></li>
+        <li><span class="zh">本地资质、招投标与采购通道</span><span class="en">Local qualification, bidding &amp; procurement</span><span class="id">Kualifikasi lokal, tender &amp; pengadaan</span></li>
+        <li><span class="zh">合资公司或本地运营主体设立</span><span class="en">Local JV or operating entity setup</span><span class="id">Pendirian JV atau entitas operasi lokal</span></li>
+        <li><span class="zh">组织访华代表团与 GTG 活动</span><span class="en">Organize delegation visits &amp; GTG events</span><span class="id">Mengorganisir kunjungan delegasi &amp; acara GTG</span></li>
+        <li><span class="zh">本地团队搭建与日常运营</span><span class="en">Local team building &amp; daily operations</span><span class="id">Pembangunan tim lokal &amp; operasi harian</span></li>
+      </ul>
+    </div>
+    <div class="jv-mid">+</div>
+    <div class="party"><span class="tag" style="background:var(--red-l);color:var(--red-d)"><span class="zh">服务方 · SERVICE</span><span class="en">SERVICE</span><span class="id">Layanan</span></span>
+      <h4>PolarRay</h4>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px"><span class="zh">中国供应链 + 技术服务商</span><span class="en">China supply chain + tech service</span><span class="id">Rantai pasok China + layanan teknologi</span></p>
+      <ul>
+        <li><span class="zh">搞定供应商代理权（独家/区域）</span><span class="en">Secure supplier agency rights (exclusive/regional)</span><span class="id">Mendapatkan hak agen pemasok (eksklusif/regional)</span></li>
+        <li><span class="zh">方案设计、集成与设备供应</span><span class="en">Solution design, integration &amp; equipment supply</span><span class="id">Desain solusi, integrasi &amp; pasokan peralatan</span></li>
+        <li><span class="zh">培训赋能与长期维保/升级服务</span><span class="en">Training &amp; long-term maintenance/upgrade services</span><span class="id">Pelatihan &amp; layanan perawatan/upgrade jangka panjang</span></li>
+        <li><span class="zh">协调组织 GTG 技术交流会</span><span class="en">Organize the GTG technical forum</span><span class="id">Mengorganisir forum teknis GTG</span></li>
+        <li><span class="zh">售后技术支持与远程诊断</span><span class="en">After-sales technical support &amp; remote diagnostics</span><span class="id">Dukungan teknis purna jual &amp; diagnosis remote</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout green"><b><span class="zh">合作原则：</span><span class="en">Cooperation Principle: </span><span class="id">Prinsip Kerja Sama: </span></b><span class="zh">PolarRay <b>不以持股方式参与</b>，而是通过设备供应、技术方案、培训与维保服务的商业合作模式，全力支持 Pak Sumar 的公司在印尼市场建立竞争优势。所有商业收益通过服务合同与供货协议实现，双方关系清晰、权责明确。</span><span class="en">PolarRay <b>does not participate via equity</b> but through a commercial cooperation model of equipment supply, technical solutions, training and maintenance services, fully supporting Pak Sumar&#x27;s company in building competitive advantage in Indonesia. All commercial returns are realized through service contracts and supply agreements, with clear relationships and well-defined responsibilities.</span><span class="id">PolarRay <b>tidak berpartisipasi melalui saham</b> tetapi melalui model kerja sama komersial pasokan peralatan, solusi teknis, pelatihan &amp; layanan perawatan, sepenuhnya mendukung perusahaan Pak Sumar membangun keunggulan kompetitif di Indonesia. Semua pendapatan komersial direalisasikan melalui kontrak layanan &amp; perjanjian pasokan, dengan hubungan jelas &amp; tanggung jawab yang terdefinisi.</span></div>
+  <div class="callout"><b><span class="zh">为什么选择 PolarRay？</span><span class="en">Why PolarRay?</span><span class="id">Mengapa PolarRay?</span></b> <span class="zh">印尼政府采购普遍要求本地法人、本地服务与税务合规。Pak Sumar 的公司作为本地主体天然满足这些条件；PolarRay 作为资深技术服务商，提供中国供应链直连、设备集成、技术培训和持续维保能力，形成<b>强强联合</b>。</span><span class="en">Indonesian public procurement generally requires a local entity, local service and tax compliance. Pak Sumar&#x27;s company naturally satisfies these requirements as a local entity. PolarRay, as an experienced technology service provider, offers direct China supply chain access, equipment integration, technical training and continuous maintenance capability, forming a <b>strong alliance</b>.</span><span class="id">Pengadaan publik Indonesia umumnya memerlukan entitas lokal, layanan lokal &amp; kepatuhan pajak. Perusahaan Pak Sumar secara alami memenuhi persyaratan ini sebagai entitas lokal. PolarRay, sebagai penyedia layanan teknologi berpengalaman, menawarkan akses langsung rantai pasok China, integrasi peralatan, pelatihan teknis &amp; kemampuan perawatan berkelanjutan, membentuk <b>aliansi kuat</b>.</span></div>
+</div></section>
+<section id="market"><div class="wrap">
+  <div class="sec-head"><span class="no">03</span><h2><span class="zh">印尼市场与需求</span><span class="en">Indonesia Market &amp; Demand</span><span class="id">Pasar &amp; Permintaan Indonesia</span></h2></div>
+  <p class="sec-sub"><span class="zh">刚需、高频、政府买单——以防灾减灾为底层逻辑。</span><span class="en">Rigid, high-frequency, government-funded — built on disaster risk reduction.</span><span class="id">Permintaan kaku, frekuensi tinggi, dibiayai pemerintah — dibangun pada pengurangan risiko bencana.</span></p>
+  <p><span class="zh">印尼横跨火环、拥有上百座活火山，地震与海啸风险极高；雨季洪涝与滑坡每年造成大量转移与损失；旱季森林与泥炭地火灾频发。以 BNPB 为代表的中央机构与各级应急力量，对救援能力的建设与升级有持续需求。</span><span class="en">Indonesia spans the Ring of Fire with hundreds of active volcanoes and extreme quake/tsunami risk; monsoon floods and landslides cause mass displacement yearly; dry-season forest and peat fires recur. Central agencies (led by BNPB) and local forces continuously build and upgrade rescue capability.</span><span class="id">Indonesia membentang di Cincin Api dengan ratusan gunung berapi aktif &amp; risiko gempa/tsunami ekstrem; banjir monsoon &amp; longsor menyebabkan pengungsian massal tahunan; kebakaran hutan &amp; gambut musim kering berulang. Badan pusat (dipimpin BNPB) &amp; kekuatan lokal terus membangun &amp; meningkatkan kemampuan penyelamatan.</span></p>
+  <div class="grid g3">
+    <div class="card stat"><div class="big" style="font-size:20px"><span class="zh">地震 / 海啸</span><span class="en">Quake / Tsunami</span><span class="id">Gempa / Tsunami</span></div><div class="lab"><span class="zh">坍塌搜救、生命探测、破拆</span><span class="en">Collapse SAR, life detection, breaching</span><span class="id">SAR reruntuhan, deteksi kehidupan, pembongkaran</span></div></div>
+    <div class="card stat"><div class="big" style="font-size:20px"><span class="zh">洪涝 / 滑坡</span><span class="en">Flood / Landslide</span><span class="id">Banjir / Longsor</span></div><div class="lab"><span class="zh">水域救援、转移、物资投送</span><span class="en">Water rescue, evacuation, airdrop</span><span class="id">Penyelamatan air, evakuasi, pengiriman udara</span></div></div>
+    <div class="card stat"><div class="big" style="font-size:20px"><span class="zh">火灾 / 火山</span><span class="en">Fire / Volcano</span><span class="id">Kebakaran / Gunung Api</span></div><div class="lab"><span class="zh">高危环境无人化处置</span><span class="en">Unmanned hazard operations</span><span class="id">Operasi bahaya tanpa awak</span></div></div>
+  </div>
+</div></section>
+<section id="products"><div class="wrap">
+  <div class="sec-head"><span class="no">04</span><h2><span class="zh">产品与解决方案目录</span><span class="en">Product &amp; Solution Catalog</span><span class="id">Katalog Produk &amp; Solusi</span></h2></div>
+  <p class="sec-sub"><span class="zh">按灾害场景组织的全范围真实装备目录（用于方案选型）；售卖以下一章的成套单元为单位。</span><span class="en">Full-range real catalog by scenario (for selection); sold as the bundled units in the next section, not as single machines.</span><span class="id">Katalog nyata jangkauan penuh berdasarkan skenario (untuk seleksi); dijual sebagai unit paket di bagian berikutnya, bukan sebagai mesin tunggal.</span></p>
+  <div class="scn-band"><span class="dot"></span><span class="scn-t"><span class="zh">地震与坍塌搜救</span><span class="en">Earthquake &amp; Collapse SAR</span><span class="id">Gempa Bumi &amp; SAR Reruntuhan</span></span></div>
+  <div class="grid g3">
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/115.jpg" alt="YSR Radar Life Detector" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">YSR 雷达生命探测仪</span><span class="en">YSR Radar Life Detector</span><span class="id">Detektor Kehidupan Radar YSR</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">YSR 雷达生命探测仪</span><span class="en">YSR Radar Life Detector</span><span class="id">Detektor Kehidupan Radar YSR</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">UWB超宽带</span><span class="en">UWB radar</span><span class="id">UWB radar</span></span><span class="spec"><span class="zh">动作探测30m</span><span class="en">Motion 30m</span><span class="id">Deteksi gerak 30m</span></span><span class="spec"><span class="zh">呼吸探测20m</span><span class="en">Breathing 20m</span><span class="id">Deteksi napas 20m</span></span><span class="spec"><span class="zh">精度10cm</span><span class="en">10cm accuracy</span><span class="id">Akurasi 10cm</span></span><span class="spec"><span class="zh">续航10h</span><span class="en">10h battery</span><span class="id">Baterai 10j</span></span></div>
+        <div class="use"><span class="zh">穿透砖墙/混凝土/土层，靠呼吸与微动定位废墟下幸存者，无需专业训练。</span><span class="en">Penetrates brick/concrete/soil; locates survivors by breathing &amp; micro-motion under rubble; no expert training needed.</span><span class="id">Menembus bata/beton/tanah; mendeteksi korban melalui napas &amp; gerakan mikro di bawah reruntuhan; tidak perlu pelatihan khusus.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/ysr-radar-life-detector-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/A9-4sensor.jpg" alt="A9 4-Sensor Audio Life Detector" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">A9 四传感器音频生命探测仪</span><span class="en">A9 4-Sensor Audio Life Detector</span><span class="id">Detektor Kehidupan Audio 4-Sensor A9</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">A9 四传感器音频生命探测仪</span><span class="en">A9 4-Sensor Audio Life Detector</span><span class="id">Detektor Kehidupan Audio 4-Sensor A9</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">4路声波传感器</span><span class="en">4 acoustic sensors</span><span class="id">4 sensor akustik</span></span><span class="spec"><span class="zh">无线传输</span><span class="en">Wireless</span><span class="id">Nirkabel</span></span><span class="spec"><span class="zh">微弱声响捕捉</span><span class="en">Faint-sound pickup</span><span class="id">Deteksi suara lemah</span></span></div>
+        <div class="use"><span class="zh">通过声波捕捉敲击/呼救声，与雷达探测互补，提升废墟定位准确率。</span><span class="en">Captures tapping/cries via sound waves; complements radar to improve rubble localization.</span><span class="id">Menangkap ketukan/teriakan melalui gelombang suara; melengkapi radar untuk meningkatkan akurasi lokalisasi reruntuhan.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/a9-wireless-audio-sound-wave-life-detector-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/%E5%9B%BE%E7%89%8712-300x218.png" alt="V5 Audio-Video Life Detector" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">V5 音视频生命探测仪</span><span class="en">V5 Audio-Video Life Detector</span><span class="id">Detektor Kehidupan Audio-Video V5</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">V5 音视频生命探测仪</span><span class="en">V5 Audio-Video Life Detector</span><span class="id">Detektor Kehidupan Audio-Video V5</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">可视化探头</span><span class="en">Visual probe</span><span class="id">Probe visual</span></span><span class="spec"><span class="zh">音视频双通道</span><span class="en">Audio+video</span><span class="id">Audio+video</span></span><span class="spec"><span class="zh">蛇眼镜头</span><span class="en">Snake camera</span><span class="id">Kamera ular</span></span></div>
+        <div class="use"><span class="zh">蛇眼镜头深入缝隙，音视频确认被困者位置与状态，指导精准破拆。</span><span class="en">Snake-camera reaches gaps; audio+video confirm victim position/status to guide precise breaching.</span><span class="id">Kamera ular menjangkau celah; audio+video memastikan posisi/status korban untuk membimbing pembongkaran tepat.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/v5-audio-and-video-life-detector-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/%E7%94%B5%E5%8A%A8%E6%B6%B2%E5%8E%8B%E5%89%AA%E6%89%A9%E5%99%A81.png" alt="Electric Hydraulic Cutter-Spreader" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">电动液压剪扩器（剪/扩一体）</span><span class="en">Electric Hydraulic Cutter-Spreader</span><span class="id">Pemotong-Pembuka Hidrolik Elektrik</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">电动液压剪扩器（剪/扩一体）</span><span class="en">Electric Hydraulic Cutter-Spreader</span><span class="id">Pemotong-Pembuka Hidrolik Elektrik</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">电池驱动</span><span class="en">Battery-powered</span><span class="id">Baterai</span></span><span class="spec"><span class="zh">剪切+扩张</span><span class="en">Cut + spread</span><span class="id">Potong + buka</span></span><span class="spec"><span class="zh">无外接油管</span><span class="en">No hoses</span><span class="id">Tanpa selang</span></span><span class="spec"><span class="zh">单人操作</span><span class="en">Single operator</span><span class="id">1 operator</span></span></div>
+        <div class="use"><span class="zh">电池驱动便携破拆，剪切钢筋钢板、扩张缝隙，坍塌与车祸快速救人。</span><span class="en">Cordless breaching; cuts rebar/steel &amp; spreads gaps for collapse and traffic-accident rescue.</span><span class="id">Pembongkaran nirkabel; memotong besi/baja &amp; membuka celah untuk penyelamatan reruntuhan &amp; kecelakaan lalu lintas.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/high-strength-materials-blades-electric-hydraulic-shear-spreader-disassemble-steel-plates-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/%E5%9B%BE%E7%89%87115-300x289.jpg" alt="LTMA5.0 Laser Tilt &amp; Aftershock Monitor" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">LTMA5.0 激光倾斜与余震监测仪</span><span class="en">LTMA5.0 Laser Tilt &amp; Aftershock Monitor</span><span class="id">Monitor Kemiringan &amp; Gempa Susulan LTMA5.0</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">LTMA5.0 激光倾斜与余震监测仪</span><span class="en">LTMA5.0 Laser Tilt &amp; Aftershock Monitor</span><span class="id">Monitor Kemiringan &amp; Gempa Susulan LTMA5.0</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">双激光</span><span class="en">Dual laser</span><span class="id">Laser ganda</span></span><span class="spec"><span class="zh">4路余震/倾角</span><span class="en">4-ch aftershock/tilt</span><span class="id">4-ch gempa susulan/kemiringan</span></span><span class="spec"><span class="zh">远程报警</span><span class="en">Remote alarm</span><span class="id">Alarm jarak jauh</span></span></div>
+        <div class="use"><span class="zh">实时监测废墟结构位移与余震，保障搜救人员作业安全。</span><span class="en">Real-time monitoring of structural displacement &amp; aftershocks to keep rescue teams safe.</span><span class="id">Pemantauan real-time perpindahan struktur &amp; gempa susulan untuk menjaga keselamatan tim penyelamat.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/ltma5-0-explosion-proof-dual-wireless-laser-tilt-and-aftershock-monitor-1-double-laser-4-aftershock-inclination-2-remote-control-terminals-vibration-sound-collection-multiple-working-modes-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="scn-band"><span class="dot"></span><span class="scn-t"><span class="zh">洪涝、海啸与水域救援</span><span class="en">Flood, Tsunami &amp; Water Rescue</span><span class="id">Banjir, Tsunami &amp; Penyelamatan Air</span></span></div>
+  <div class="grid g3">
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://www.oceanalpha.com/wp-content/uploads/2025/08/1-1-yz-07.webp" alt="Dolphin 3 Remote Water-Rescue Robot" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">Dolphin 3 遥控水上救援机器人</span><span class="en">Dolphin 3 Remote Water-Rescue Robot</span><span class="id">Robot Penyelamatan Air Remote Dolphin 3</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">Dolphin 3 遥控水上救援机器人</span><span class="en">Dolphin 3 Remote Water-Rescue Robot</span><span class="id">Robot Penyelamatan Air Remote Dolphin 3</span></h4>
+        <div class="brandline"><span class="zh">品牌：OceanAlpha 云洲</span><span class="en">Brand: OceanAlpha</span><span class="id">Merek: OceanAlpha</span></div>
+        <div class="specs"><span class="spec"><span class="zh">最高7m/s</span><span class="en">Top 7m/s</span><span class="id">Maks 7m/s</span></span><span class="spec"><span class="zh">拖拽1吨</span><span class="en">1-ton tow</span><span class="id">Tarik 1 ton</span></span><span class="spec"><span class="zh">2秒自复位</span><span class="en">2s self-right</span><span class="id">Perbaikan diri 2d</span></span><span class="spec"><span class="zh">1080P回传</span><span class="en">1080P feed</span><span class="id">Feed 1080P</span></span></div>
+        <div class="use"><span class="zh">自航式遥控救生圈，救援人员不下水即可高速抵达落水者，比人工快3倍。</span><span class="en">Self-propelled remote lifebuoy; reaches victims at high speed without rescuers entering water, 3x faster than swimmers.</span><span class="id">Pelampung remote bergerak sendiri; mencapai korban dengan kecepatan tinggi tanpa penyelam masuk air, 3x lebih cepat dari perenang.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.oceanalpha.com/water-rescue/dolphin-3/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/LB-Z6-1-300x135.png" alt="LB-Z6 Self-Deploying Lifeboat" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">LB-Z6 自展开救生艇</span><span class="en">LB-Z6 Self-Deploying Lifeboat</span><span class="id">Perahu Penyelamat Self-Deploying LB-Z6</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">LB-Z6 自展开救生艇</span><span class="en">LB-Z6 Self-Deploying Lifeboat</span><span class="id">Perahu Penyelamat Self-Deploying LB-Z6</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">入水自展开</span><span class="en">Auto-deploy</span><span class="id">Deploy otomatis</span></span><span class="spec"><span class="zh">遥控驱动</span><span class="en">Remote drive</span><span class="id">Remote drive</span></span><span class="spec"><span class="zh">快速施救</span><span class="en">Rapid rescue</span><span class="id">Penyelamatan cepat</span></span></div>
+        <div class="use"><span class="zh">抛投入水即自动展开成艇，遥控驶向被困者，适合洪流与近海快速救援。</span><span class="en">Unfolds into a boat on water impact; remotely driven to victims for flood &amp; nearshore rescue.</span><span class="id">Terbuka menjadi perahu saat mengenai air; dikendalikan remote ke korban untuk penyelamatan banjir &amp; lepas pantai.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/lb-z6-water-rescue-self-deploying-lifeboat-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/LT-200PRO-1-300x300.jpg" alt="LT-200PRO Underwater SAR Robot (ROV)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">LT-200PRO 水下搜救机器人(ROV)</span><span class="en">LT-200PRO Underwater SAR Robot (ROV)</span><span class="id">Robot SAR Bawah Air LT-200PRO (ROV)</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">LT-200PRO 水下搜救机器人(ROV)</span><span class="en">LT-200PRO Underwater SAR Robot (ROV)</span><span class="id">Robot SAR Bawah Air LT-200PRO (ROV)</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">8推矢量</span><span class="en">8-thruster vector</span><span class="id">8 thruster vektor</span></span><span class="spec"><span class="zh">潜深200m</span><span class="en">200m depth</span><span class="id">Kedalaman 200m</span></span><span class="spec"><span class="zh">20+配件</span><span class="en">20+ accessories</span><span class="id">20+ aksesori</span></span></div>
+        <div class="use"><span class="zh">工业级水下机器人，潜深200m，搭载声呐/机械臂，用于沉水搜救与水下勘察。</span><span class="en">Industrial ROV to 200m with sonar/arm for submerged search and underwater survey.</span><span class="id">ROV industri hingga 200m dengan sonar/lengan untuk pencarian tenggelam &amp; survei bawah air.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/underwater-search-and-rescue-robot-lt-200pro-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/%E5%9B%BE%E7%89%871131-300x300.jpg" alt="RXR-Q200L Drainage &amp; Rescue Robot" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">RXR-Q200L 排水排涝抢险机器人</span><span class="en">RXR-Q200L Drainage &amp; Rescue Robot</span><span class="id">Robot Drainase &amp; Penyelamatan RXR-Q200L</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">RXR-Q200L 排水排涝抢险机器人</span><span class="en">RXR-Q200L Drainage &amp; Rescue Robot</span><span class="id">Robot Drainase &amp; Penyelamatan RXR-Q200L</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">大流量排水</span><span class="en">High-flow pump</span><span class="id">Pompa aliran tinggi</span></span><span class="spec"><span class="zh">履带自走</span><span class="en">Tracked</span><span class="id">Tracked</span></span><span class="spec"><span class="zh">遥控作业</span><span class="en">Remote op</span><span class="id">Operasi remote</span></span></div>
+        <div class="use"><span class="zh">大流量排水抢险机器人，用于地库、地铁、隧道、涵洞等内涝积水快速排除。</span><span class="en">High-flow drainage robot for rapid de-watering of garages, metros, tunnels and culverts.</span><span class="id">Robot drainase aliran tinggi untuk pengeringan cepat garasi, metro, terowongan &amp; gorong-gorong.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/rxr-q200l-integrated-drainage-and-demolition-robot-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/pic-300x205.png" alt="Water-Rescue Floating Bridge (15m)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">水上救援浮桥(15m)</span><span class="en">Water-Rescue Floating Bridge (15m)</span><span class="id">Jembatan Apung Penyelamatan Air (15m)</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">水上救援浮桥(15m)</span><span class="en">Water-Rescue Floating Bridge (15m)</span><span class="id">Jembatan Apung Penyelamatan Air (15m)</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">长15m</span><span class="en">15m long</span><span class="id">Panjang 15m</span></span><span class="spec"><span class="zh">快速充气</span><span class="en">Quick inflate</span><span class="id">Pompa cepat</span></span><span class="spec"><span class="zh">夜光边带</span><span class="en">Luminous edge</span><span class="id">Tepi luminous</span></span></div>
+        <div class="use"><span class="zh">快速充气式浮桥，长15m，便于在洪水/内涝区转移被困群众与物资。</span><span class="en">Quick-inflate 15m pontoon bridge to evacuate people and supplies across flooded areas.</span><span class="id">Jembatan ponton pompa cepat 15m untuk mengevakuasi orang &amp; barang di area banjir.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/water-rescue-floating-bridge-15mys-cqjyfq-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/Pic112-300x300.jpg" alt="LT-CL30 Flow-Measuring Drone" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">LT-CL30 测流无人机</span><span class="en">LT-CL30 Flow-Measuring Drone</span><span class="id">Drone Pengukur Aliran LT-CL30</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">LT-CL30 测流无人机</span><span class="en">LT-CL30 Flow-Measuring Drone</span><span class="id">Drone Pengukur Aliran LT-CL30</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">毫米波雷达</span><span class="en">mmWave radar</span><span class="id">Radar mmWave</span></span><span class="spec"><span class="zh">流速&gt;=20m/s</span><span class="en">Flow &gt;=20m/s</span><span class="id">Aliran &gt;=20m/s</span></span><span class="spec"><span class="zh">汛期监测</span><span class="en">Flood monitoring</span><span class="id">Pemantauan banjir</span></span></div>
+        <div class="use"><span class="zh">集成毫米波雷达，汛期/暴雨快速测量洪水与决口流速，支撑指挥决策。</span><span class="en">mmWave-equipped drone measures flood/breach flow speed during storms to support command decisions.</span><span class="id">Drone ber-radar mmWave mengukur kecepatan aliran banjir/breaches saat badai untuk mendukung keputusan komando.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/flow-measuring-drone-lt-cl30-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/Pic-113-300x300.jpg" alt="LT-BMF Inflatable Life Raft" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">LT-BMF 充气救生筏</span><span class="en">LT-BMF Inflatable Life Raft</span><span class="id">Raft Penyelamat Tiup LT-BMF</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">LT-BMF 充气救生筏</span><span class="en">LT-BMF Inflatable Life Raft</span><span class="id">Raft Penyelamat Tiup LT-BMF</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">浮力510kg</span><span class="en">Buoyancy 510kg</span><span class="id">Daya apung 510kg</span></span><span class="spec"><span class="zh">气瓶速充</span><span class="en">Cylinder inflate</span><span class="id">Pompa silinder</span></span><span class="spec"><span class="zh">3气囊</span><span class="en">3 air chambers</span><span class="id">3 ruang udara</span></span></div>
+        <div class="use"><span class="zh">气瓶秒充救生筏，浮力510kg，火灾/水灾批量转移人员的基础装备。</span><span class="en">Cylinder-inflated raft, 510kg buoyancy; staple for mass evacuation in fire/flood.</span><span class="id">Raft pompa silinder, daya apung 510kg; perlengkapan dasar untuk evakuasi massal saat kebakaran/banjir.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/water-rescue-inflatable-life-raft-lt-bmf-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="scn-band"><span class="dot"></span><span class="scn-t"><span class="zh">火灾、火山与危化处置</span><span class="en">Fire, Volcano &amp; Hazmat</span><span class="id">Kebakaran, Gunung Berapi &amp; Bahan Berbahaya</span></span></div>
+  <div class="grid g3">
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/373a6761-300x300.jpg" alt="RXR-M80D Firefighting &amp; Recon Robot" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">RXR-M80D 消防灭火侦察机器人</span><span class="en">RXR-M80D Firefighting &amp; Recon Robot</span><span class="id">Robot Pemadam &amp; Pengintai RXR-M80D</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">RXR-M80D 消防灭火侦察机器人</span><span class="en">RXR-M80D Firefighting &amp; Recon Robot</span><span class="id">Robot Pemadam &amp; Pengintai RXR-M80D</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">履带越障</span><span class="en">Tracked</span><span class="id">Tracked</span></span><span class="spec"><span class="zh">大流量喷射</span><span class="en">High-flow nozzle</span><span class="id">Nozzle aliran tinggi</span></span><span class="spec"><span class="zh">耐高温</span><span class="en">Heat-resistant</span><span class="id">Tahan panas</span></span><span class="spec"><span class="zh">遥控</span><span class="en">Remote</span><span class="id">Remote</span></span></div>
+        <div class="use"><span class="zh">遥控履带消防机器人，大流量水/泡沫喷射，进入高温浓烟与危化品现场作业。</span><span class="en">Remote tracked firefighting robot; high-flow water/foam jet for high-heat, smoke and hazmat scenes.</span><span class="id">Robot pemadam tracked remote; semprotan air/busa aliran tinggi untuk area panas, asap &amp; bahan berbahaya.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/rxr-m80d-fire-fighting-robot-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://www.oceanalpha.com/wp-content/uploads/2025/08/1-1-yz-08.webp" alt="Fire Conqueror Firefighting USV" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">Fire Conqueror 消防无人艇(USV)</span><span class="en">Fire Conqueror Firefighting USV</span><span class="id">USV Pemadam Fire Conqueror</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">Fire Conqueror 消防无人艇(USV)</span><span class="en">Fire Conqueror Firefighting USV</span><span class="id">USV Pemadam Fire Conqueror</span></h4>
+        <div class="brandline"><span class="zh">品牌：OceanAlpha 云洲</span><span class="en">Brand: OceanAlpha</span><span class="id">Merek: OceanAlpha</span></div>
+        <div class="specs"><span class="spec"><span class="zh">无人驾驶</span><span class="en">Unmanned</span><span class="id">Tanpa awak</span></span><span class="spec"><span class="zh">远程灭火</span><span class="en">Remote fire jet</span><span class="id">Semprotan api remote</span></span><span class="spec"><span class="zh">物资转运</span><span class="en">Cargo transfer</span><span class="id">Transfer kargo</span></span></div>
+        <div class="use"><span class="zh">无人水面消防与救援平台，适合码头、船舶、近海/内河火情与水域应急。</span><span class="en">Unmanned surface firefighting/rescue platform for ports, vessels, nearshore &amp; inland water emergencies.</span><span class="id">Platform pemadam/rescue permukaan tanpa awak untuk pelabuhan, kapal, daratan &amp; daratan dalam darurat air.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.oceanalpha.com/firefighting/fire-conqueror-usv/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/3-1-300x169.png" alt="Firefighting &amp; Decontamination Drone" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">灭火/消杀无人机</span><span class="en">Firefighting &amp; Decontamination Drone</span><span class="id">Drone Pemadam &amp; Dekontaminasi</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">灭火/消杀无人机</span><span class="en">Firefighting &amp; Decontamination Drone</span><span class="id">Drone Pemadam &amp; Dekontaminasi</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">高机动</span><span class="en">High mobility</span><span class="id">Mobilitas tinggi</span></span><span class="spec"><span class="zh">投弹/喷洒</span><span class="en">Drop/spray</span><span class="id">Jatuhkan/semprot</span></span><span class="spec"><span class="zh">高层可达</span><span class="en">High-rise reach</span><span class="id">Jangkauan tinggi</span></span></div>
+        <div class="use"><span class="zh">空中灭火与消杀，投放灭火弹或喷洒，处置高层与林火等难达火点。</span><span class="en">Aerial fire suppression/decon; drops fire balls or sprays to reach high-rise &amp; wildfire hotspots.</span><span class="id">Pemadaman/dekontaminasi udara; menjatuhkan bola api atau menyemprot untuk mencapai titik panas gedung tinggi &amp; kebakaran hutan.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/efficient-operation-firefighting-decontamination-drone-high-mobility-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/QQ20250716-102551-298x300.png" alt="CD4 Wireless Composite Gas Detector" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">CD4 无线复合气体探测仪</span><span class="en">CD4 Wireless Composite Gas Detector</span><span class="id">Detektor Gas Komposit Nirkabel CD4</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">CD4 无线复合气体探测仪</span><span class="en">CD4 Wireless Composite Gas Detector</span><span class="id">Detektor Gas Komposit Nirkabel CD4</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">多气体检测</span><span class="en">Multi-gas</span><span class="id">Multi-gas</span></span><span class="spec"><span class="zh">无线组网</span><span class="en">Wireless mesh</span><span class="id">Jaringan nirkabel</span></span><span class="spec"><span class="zh">防爆</span><span class="en">Ex-proof</span><span class="id">Tahan ledak</span></span></div>
+        <div class="use"><span class="zh">多气体无线探测，危化品泄漏/受限空间作业的安全前哨与预警。</span><span class="en">Multi-gas wireless detection; safety sentry for hazmat leaks and confined-space operations.</span><span class="id">Deteksi multi-gas nirkabel; penjaga keselamatan untuk kebocoran bahan berbahaya &amp; operasi ruang terbatas.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/cd4-wireless-composite-gas-detector-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="scn-band"><span class="dot"></span><span class="scn-t"><span class="zh">空中侦察与重载投送</span><span class="en">Aerial Recon &amp; Heavy-Lift Delivery</span><span class="id">Pengintai Udara &amp; Pengiriman Angkut Berat</span></span></div>
+  <div class="grid g3">
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://www-cdn.djiits.com/cms/uploads/5a6ef3ed6f35e3719453a78ff0e67af4@374*374.png" alt="DJI Matrice 4TD + Dock 3 Drone-in-a-Box" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">DJI Matrice 4TD + Dock 3 无人机机场</span><span class="en">DJI Matrice 4TD + Dock 3 Drone-in-a-Box</span><span class="id">Bandara Drone DJI Matrice 4TD + Dock 3</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">DJI Matrice 4TD + Dock 3 无人机机场</span><span class="en">DJI Matrice 4TD + Dock 3 Drone-in-a-Box</span><span class="id">Bandara Drone DJI Matrice 4TD + Dock 3</span></h4>
+        <div class="brandline"><span class="zh">品牌：DJI 大疆行业</span><span class="en">Brand: DJI Enterprise</span><span class="id">Merek: DJI Enterprise</span></div>
+        <div class="specs"><span class="spec"><span class="zh">红外热成像</span><span class="en">Thermal IR</span><span class="id">Thermal IR</span></span><span class="spec"><span class="zh">夜视补光</span><span class="en">NIR night</span><span class="id">NIR night</span></span><span class="spec"><span class="zh">激光测距</span><span class="en">Laser RF</span><span class="id">Laser RF</span></span><span class="spec"><span class="zh">自动机场</span><span class="en">Auto dock</span><span class="id">Dock otomatis</span></span></div>
+        <div class="use"><span class="zh">多传感旗舰+自动机场，7x24全自动巡飞，灾后态势感知与火点/人员搜索。</span><span class="en">Multi-sensor flagship + auto dock; 24/7 autonomous flights for post-disaster awareness and hotspot/person search.</span><span class="id">Flagship multi-sensor + dock otomatis; penerbangan otonom 24/7 untuk kesadaran pasca-bencana &amp; pencarian titik panas/orang.</span></div>
+        <div class="links"><a class="btn primary" href="https://enterprise.dji.com/matrice-4-series" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://www-cdn.djiits.com/cms/uploads/6309da752b25bee607f0c785de57085e@374*374.png" alt="DJI FlyCart 30 Heavy-Lift Cargo Drone" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">DJI FlyCart 30 重载运输无人机</span><span class="en">DJI FlyCart 30 Heavy-Lift Cargo Drone</span><span class="id">Drone Kargo Angkut Berat DJI FlyCart 30</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">DJI FlyCart 30 重载运输无人机</span><span class="en">DJI FlyCart 30 Heavy-Lift Cargo Drone</span><span class="id">Drone Kargo Angkut Berat DJI FlyCart 30</span></h4>
+        <div class="brandline"><span class="zh">品牌：DJI 大疆行业</span><span class="en">Brand: DJI Enterprise</span><span class="id">Merek: DJI Enterprise</span></div>
+        <div class="specs"><span class="spec"><span class="zh">载重30kg</span><span class="en">30kg payload</span><span class="id">Muatan 30kg</span></span><span class="spec"><span class="zh">满载16km</span><span class="en">16km loaded</span><span class="id">16km muatan penuh</span></span><span class="spec"><span class="zh">升限6000m</span><span class="en">6000m ceiling</span><span class="id">Langit-langit 6000m</span></span><span class="spec"><span class="zh">抗风12m/s</span><span class="en">12m/s wind</span><span class="id">Tahan angin 12m/s</span></span></div>
+        <div class="use"><span class="zh">30kg载重、货箱/吊运双模，向道路中断的孤岛与灾区投送药品食水。</span><span class="en">30kg payload, cargo/winch modes; delivers medicine &amp; water to cut-off islands and disaster zones.</span><span class="id">Muatan 30kg, mode kargo/winch; mengirim obat &amp; air ke pulau terisolasi &amp; zona bencana.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.dji.com/flycart-30" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/200kg%E8%BD%BD%E8%8D%B7%E5%A4%A7%E8%BD%BD%E9%87%8D%E9%95%BF%E8%88%AA%E6%97%B6%E6%B2%B9%E7%94%B5%E6%B7%B7%E5%90%88%E5%A4%9A%E6%97%8B%E7%BF%BC%E6%97%A0%E4%BA%BA%E6%9C%BA1.png" alt="X250 Hybrid 200kg Heavy-Lift UAV" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">X250 油电混合200kg重载无人机</span><span class="en">X250 Hybrid 200kg Heavy-Lift UAV</span><span class="id">UAV Angkut Berat 200kg Hybrid X250</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">X250 油电混合200kg重载无人机</span><span class="en">X250 Hybrid 200kg Heavy-Lift UAV</span><span class="id">UAV Angkut Berat 200kg Hybrid X250</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky / 星智航空</span><span class="en">Brand: Topsky / Star Aviation</span><span class="id">Merek: Topsky / Star Aviation</span></div>
+        <div class="specs"><span class="spec"><span class="zh">载荷200kg</span><span class="en">200kg payload</span><span class="id">Muatan 200kg</span></span><span class="spec"><span class="zh">油电混合</span><span class="en">Gas-electric</span><span class="id">Gas-listrik</span></span><span class="spec"><span class="zh">长航时</span><span class="en">Long endurance</span><span class="id">Dayatahan panjang</span></span></div>
+        <div class="use"><span class="zh">油电混合重载无人机，载荷达200kg，跨岛屿/山谷的大批量物资空运。</span><span class="en">Gas-electric heavy-lift UAV up to 200kg payload for bulk airlift across islands and valleys.</span><span class="id">UAV angkut berat gas-listrik hingga 200kg untuk pengangkutan massal lintas pulau &amp; lembah.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/200kg-payload-heavy-lift-long-endurance-hybrid-gas-electric-multi-rotor-uav-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/%E9%99%86%E7%A9%BA%E4%B8%A4%E6%A0%96%E6%9C%BA%E5%99%A8%E4%BA%BA1-300x169.png" alt="Land-Air Amphibious Drone" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">陆空两栖无人机</span><span class="en">Land-Air Amphibious Drone</span><span class="id">Drone Amfibi Darat-Udara</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">陆空两栖无人机</span><span class="en">Land-Air Amphibious Drone</span><span class="id">Drone Amfibi Darat-Udara</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">陆空两用</span><span class="en">Land+air</span><span class="id">Darat+udara</span></span><span class="spec"><span class="zh">RTK+GPS</span><span class="en">RTK+GPS</span><span class="id">RTK+GPS</span></span><span class="spec"><span class="zh">链路&gt;=15km</span><span class="en">Link &gt;=15km</span><span class="id">Link &gt;=15km</span></span></div>
+        <div class="use"><span class="zh">可飞可走的两栖平台，复杂废墟与受阻地形中灵活侦察与抵近作业。</span><span class="en">Drive-and-fly amphibious platform for flexible recon and close approach in rubble &amp; blocked terrain.</span><span class="id">Platform amfibi terbang-jalan untuk pengintaian fleksibel &amp; pendekatan dekat di reruntuhan &amp; medan terhalang.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/integrated-remote-control-land-air-amphibious-drone-equipped-with-a-large-capacity-battery-and-efficient-motor-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/%E4%B8%89%E7%BB%B4%E4%BE%A6%E6%B5%8B%E5%BB%BA%E6%A8%A1%E6%97%A0%E4%BA%BA%E6%9C%BA4-300x300.jpg" alt="3D Mapping Drone (PA + Searchlight)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">三维侦测建模无人机(喊话/探照)</span><span class="en">3D Mapping Drone (PA + Searchlight)</span><span class="id">Drone Pemetaan 3D (PA + Sorot)</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">三维侦测建模无人机(喊话/探照)</span><span class="en">3D Mapping Drone (PA + Searchlight)</span><span class="id">Drone Pemetaan 3D (PA + Sorot)</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">三维建模</span><span class="en">3D modeling</span><span class="id">Pemodelan 3D</span></span><span class="spec"><span class="zh">大功率探照</span><span class="en">High-power light</span><span class="id">Lampu daya tinggi</span></span><span class="spec"><span class="zh">数字喊话</span><span class="en">Digital PA</span><span class="id">PA digital</span></span></div>
+        <div class="use"><span class="zh">灾后三维建模、夜间探照与空中喊话疏导，支撑指挥与群众引导。</span><span class="en">Post-disaster 3D mapping, night searchlight and aerial PA to support command and crowd guidance.</span><span class="id">Pemetaan 3D pasca-bencana, sorot malam &amp; PA udara untuk mendukung komando &amp; panduan kerumunan.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/digital-voice-broadcast-technology-3d-detection-modeling-drone-high-power-searchlight-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="scn-band"><span class="dot"></span><span class="scn-t"><span class="zh">现场指挥与保障</span><span class="en">On-Site Command &amp; Support</span><span class="id">Komando &amp; Dukungan di Lokasi</span></span></div>
+  <div class="grid g3">
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://websiteoss.ecoflow.com/media/delta/pc/751b40ecfe45b2cae84090458a0dd090.jpg" alt="EcoFlow DELTA Portable Power Station" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">EcoFlow DELTA 移动应急电源</span><span class="en">EcoFlow DELTA Portable Power Station</span><span class="id">Stasiun Daya Portabel EcoFlow DELTA</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">EcoFlow DELTA 移动应急电源</span><span class="en">EcoFlow DELTA Portable Power Station</span><span class="id">Stasiun Daya Portabel EcoFlow DELTA</span></h4>
+        <div class="brandline"><span class="zh">品牌：EcoFlow 正浩</span><span class="en">Brand: EcoFlow</span><span class="id">Merek: EcoFlow</span></div>
+        <div class="specs"><span class="spec"><span class="zh">1.2kWh</span><span class="en">1.2kWh</span><span class="id">1.2kWh</span></span><span class="spec"><span class="zh">1800W</span><span class="en">1800W</span><span class="id">1800W</span></span><span class="spec"><span class="zh">太阳能可充</span><span class="en">Solar-ready</span><span class="id">Siap solar</span></span><span class="spec"><span class="zh">静音无排放</span><span class="en">Silent/clean</span><span class="id">Senyap/bersih</span></span></div>
+        <div class="use"><span class="zh">便携储能，瞬时切换供电，可太阳能补电，保障通信/照明/医疗设备。</span><span class="en">Portable storage with instant switchover &amp; solar charging to power comms/lighting/medical gear.</span><span class="id">Penyimpanan portabel dengan peralihan instan &amp; pengisian solar untuk menghidupkan komunikasi/penerangan/peralatan medis.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.ecoflow.com/us/delta-portable-power-station" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/%E7%B3%BB%E7%95%99%E7%85%A7%E6%98%8E%E6%97%A0%E4%BA%BA%E6%9C%BA1-300x300.jpg" alt="Tethered Illumination UAV" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">系留照明无人机</span><span class="en">Tethered Illumination UAV</span><span class="id">UAV Penerangan Tethered</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">系留照明无人机</span><span class="en">Tethered Illumination UAV</span><span class="id">UAV Penerangan Tethered</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">长时悬停</span><span class="en">Long hover</span><span class="id">Hover lama</span></span><span class="spec"><span class="zh">线缆供电</span><span class="en">Cable power</span><span class="id">Daya kabel</span></span><span class="spec"><span class="zh">大范围照明</span><span class="en">Wide lighting</span><span class="id">Penerangan luas</span></span></div>
+        <div class="use"><span class="zh">系留供电长时悬停，空中大范围照明，夜间救援与指挥区照亮利器。</span><span class="en">Cable-powered long-hover drone for wide aerial lighting of night rescue and command zones.</span><span class="id">Drone hover lama berdaya kabel untuk penerangan udara luas zona penyelamatan malam &amp; komando.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/long-hovering-time-tethered-illumination-unmanned-aerial-vehicle-intelligent-retractable-cable-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/LT360-1-300x300.jpg" alt="360 Mobile Panoramic Lighting" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">360度 移动全景照明系统</span><span class="en">360 Mobile Panoramic Lighting</span><span class="id">Sistem Penerangan Panorama Mobile 360</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">360度 移动全景照明系统</span><span class="en">360 Mobile Panoramic Lighting</span><span class="id">Sistem Penerangan Panorama Mobile 360</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">大功率</span><span class="en">High-power</span><span class="id">Daya tinggi</span></span><span class="spec"><span class="zh">360度覆盖</span><span class="en">360 cover</span><span class="id">Tutup 360</span></span><span class="spec"><span class="zh">快速部署</span><span class="en">Quick deploy</span><span class="id">Deploy cepat</span></span></div>
+        <div class="use"><span class="zh">快速部署的大功率全景照明，照亮搜救、转运与医疗作业现场。</span><span class="en">Rapid-deploy high-power panoramic lighting for rescue, transfer and medical work areas.</span><span class="id">Penerangan panorama daya tinggi deploy cepat untuk area kerja penyelamatan, transfer &amp; medis.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/360-mobile-panoramic-lighting-system-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+    <div class="card prod">
+      <div class="imgbox">
+        <img src="https://cdn.globalso.com/topskyeqpt/Pic-231-300x300.jpg" alt="M-105 Underwater Rescue Comms" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="fallback"><span><span class="zh">M-105 水下救援通信设备</span><span class="en">M-105 Underwater Rescue Comms</span><span class="id">Peralatan Komunikasi Penyelamatan Bawah Air M-105</span></span></div>
+        <span class="ob"><span class="zh">中国</span><span class="en">CN</span><span class="id">CN</span></span>
+      </div>
+      <div class="body">
+        <h4><span class="zh">M-105 水下救援通信设备</span><span class="en">M-105 Underwater Rescue Comms</span><span class="id">Peralatan Komunikasi Penyelamatan Bawah Air M-105</span></h4>
+        <div class="brandline"><span class="zh">品牌：Topsky 天盾</span><span class="en">Brand: Topsky</span><span class="id">Merek: Topsky</span></div>
+        <div class="specs"><span class="spec"><span class="zh">无线超声</span><span class="en">Ultrasonic</span><span class="id">Ultrasonik</span></span><span class="spec"><span class="zh">水面-水下通话</span><span class="en">Surface&lt;-&gt;diver</span><span class="id">Permukaan&lt;-&gt;penyelam</span></span><span class="spec"><span class="zh">8潜水员</span><span class="en">8 divers</span><span class="id">8 penyelam</span></span></div>
+        <div class="use"><span class="zh">无线超声水下通信，水面与潜水员实时通话，提升水下搜救协同与安全。</span><span class="en">Wireless ultrasonic comms for real-time surface-to-diver talk, improving dive-SAR coordination &amp; safety.</span><span class="id">Komunikasi ultrasonik nirkabel untuk percakapan real-time permukaan-ke-penyelam, meningkatkan koordinasi &amp; keselamatan SAR selam.</span></div>
+        <div class="links"><a class="btn primary" href="https://www.topskyeqpt.com/underwater-rescue-communication-device-m-105-product/" target="_blank" rel="noopener"><span class="zh">官网产品页 ↗</span><span class="en">Official page ↗</span><span class="id">Halaman produk ↗</span></a></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section id="compare"><div class="wrap">
+  <div class="sec-head"><span class="no">05</span><h2><span class="zh">多维对比与选型分析</span><span class="en">Multi-Dimensional Comparison &amp; Selection</span><span class="id">Perbandingan &amp; Seleksi Multi-Dimensi</span></h2></div>
+  <p class="sec-sub"><span class="zh">核心规格 · 国产vs国际 · 场景选型，三个维度横向对比。</span><span class="en">Core specs · China vs international · scenario fit.</span><span class="id">Spesifikasi inti · China vs internasional · kesesuaian skenario.</span></p>
+  <h3><span class="zh">① 核心规格对比</span><span class="en">① Core Specs Comparison</span><span class="id">① Perbandingan Spesifikasi Inti</span></h3>
+  <div class="tablewrap"><table class="t-spec"><thead><tr><th><span class="zh">产品</span><span class="en">Product</span><span class="id">Produk</span></th><th><span class="zh">品牌/产地</span><span class="en">Brand / Origin</span><span class="id">Merek / Asal</span></th><th><span class="zh">关键指标</span><span class="en">Key Metrics</span><span class="id">Metrik Kunci</span></th><th><span class="zh">适用场景</span><span class="en">Best For</span><span class="id">Cocok Untuk</span></th></tr></thead><tbody>
+<tr><td><span class="zh">YSR 雷达生命探测仪</span><span class="en">YSR Radar Life Detector</span><span class="id">Detektor Kehidupan Radar YSR</span></td><td><span class="zh">Topsky · China</span><span class="en">Topsky · CN</span><span class="id">Topsky · China</span></td><td><span class="zh">探测30m / 精度10cm / 续航10h</span><span class="en">30m range / 10cm / 10h</span><span class="id">Jangkauan 30m / 10cm / 10j</span></td><td><span class="zh">废墟搜救</span><span class="en">Rubble SAR</span><span class="id">SAR Reruntuhan</span></td></tr>
+<tr><td><span class="zh">Dolphin 3 水上救援机器人</span><span class="en">Dolphin 3 Water-Rescue Robot</span><span class="id">Robot Penyelamatan Air Dolphin 3</span></td><td><span class="zh">OceanAlpha · China</span><span class="en">OceanAlpha · CN</span><span class="id">OceanAlpha · China</span></td><td><span class="zh">7m/s / 拖1吨 / 2秒自复位</span><span class="en">7m/s / 1t tow / 2s self-right</span><span class="id">7m/s / tarik 1t / perbaikan diri 2d</span></td><td><span class="zh">水域救援</span><span class="en">Water rescue</span><span class="id">Penyelamatan air</span></td></tr>
+<tr><td><span class="zh">RXR-M80D 消防机器人</span><span class="en">RXR-M80D Firefighting Robot</span><span class="id">Robot Pemadam RXR-M80D</span></td><td><span class="zh">Topsky · China</span><span class="en">Topsky · CN</span><span class="id">Topsky · China</span></td><td><span class="zh">大流量喷射 / 履带越障 / 耐高温</span><span class="en">High-flow / tracked / heat-proof</span><span class="id">Aliran tinggi / tracked / tahan panas</span></td><td><span class="zh">危化火场</span><span class="en">Hazmat fire</span><span class="id">Kebakaran bahan berbahaya</span></td></tr>
+<tr><td><span class="zh">Matrice 4TD + Dock 3</span><span class="en">Matrice 4TD + Dock 3</span><span class="id">Matrice 4TD + Dock 3</span></td><td><span class="zh">DJI · China</span><span class="en">DJI · CN</span><span class="id">DJI · China</span></td><td><span class="zh">热成像 / 夜视 / 自动机场 7x24</span><span class="en">Thermal / NIR / 24-7 dock</span><span class="id">Thermal / NIR / dock 24-7</span></td><td><span class="zh">空中侦察</span><span class="en">Aerial recon</span><span class="id">Pengintaian udara</span></td></tr>
+<tr><td><span class="zh">FlyCart 30 运输无人机</span><span class="en">FlyCart 30 Cargo Drone</span><span class="id">Drone Kargo FlyCart 30</span></td><td><span class="zh">DJI · China</span><span class="en">DJI · CN</span><span class="id">DJI · China</span></td><td><span class="zh">载重30kg / 满载16km / 抗风12m/s</span><span class="en">30kg / 16km / 12m/s wind</span><span class="id">30kg / 16km / tahan angin 12m/s</span></td><td><span class="zh">重载投送</span><span class="en">Heavy-lift delivery</span><span class="id">Pengiriman angkut berat</span></td></tr>
+<tr><td><span class="zh">X250 重载无人机</span><span class="en">X250 Heavy-Lift UAV</span><span class="id">UAV Angkut Berat X250</span></td><td><span class="zh">Topsky · China</span><span class="en">Topsky · CN</span><span class="id">Topsky · China</span></td><td><span class="zh">载荷200kg / 油电混合 / 长航时</span><span class="en">200kg payload / gas-electric / long endurance</span><span class="id">Muatan 200kg / gas-listrik / dayatahan panjang</span></td><td><span class="zh">跨岛空运</span><span class="en">Inter-island airlift</span><span class="id">Pengangkutan lintas pulau</span></td></tr>
+</tbody></table></div>
+</div></section>
+<section id="units"><div class="wrap">
+  <div class="sec-head"><span class="no">06</span><h2><span class="zh">应急能力单元 / 解决方案套餐</span><span class="en">Capability Units / Solution Kits</span><span class="id">Unit Kemampuan Darurat / Paket Solusi</span></h2></div>
+  <p class="sec-sub"><span class="zh">我们的售卖标的：按规模与能力分级的成套应急单元，而非单台设备报价。</span><span class="en">What we sell: tiered, bundled emergency-capability units — not per-machine pricing.</span><span class="id">Yang kita jual: unit kemampuan darurat bertingkat &amp; terpaket — bukan harga per mesin.</span></p>
+  <div class="grid g2">
+    <div class="card unit">
+      <div class="top"><div class="tier"><span class="zh">入门单元 · ENTRY</span><span class="en">ENTRY</span><span class="id">Entry</span></div><h4><span class="zh">班组级搜救装备包</span><span class="en">Squad SAR Kit</span><span class="id">Paket SAR Regu</span></h4></div>
+      <div class="bd">
+        <div class="row"><b><span class="zh">配置：</span><span class="en">Config: </span><span class="id">Konfigurasi: </span></b><span class="zh">生命探测（雷达+音频）、电动破拆、移动照明、应急通信、个人防护与充气救生装备</span><span class="en">Life detection (radar+audio), electric breaching, mobile lighting, comms, PPE &amp; inflatable rescue gear</span><span class="id">Deteksi kehidupan (radar+audio), pembongkaran elektrik, penerangan mobile, komunikasi, APD &amp; perlengkapan rescue tiup</span></div>
+        <div class="row"><b><span class="zh">适用：</span><span class="en">For: </span><span class="id">Untuk: </span></b><span class="zh">县/社区一线快速反应班组（6–10人）</span><span class="en">County/community first-response squads (6–10 pax)</span><span class="id">Regu respons pertama kabupaten/komunitas (6–10 orang)</span></div>
+        <div class="invest"><span class="zh">投资概算</span><span class="en">Indicative investment</span><span class="id">Investasi indikatif</span>：<span class="zh">¥80万–180万 / 套（估）</span><span class="en">¥80k–180k / kit (est.)</span><span class="id">¥80k–180k / paket (est.)</span></div>
+        <div class="incl">✔ <span class="zh">含基础操作培训 + 1 年维保</span><span class="en">Incl. basic operator training + 1-yr maintenance</span><span class="id">Termasuk pelatihan operator dasar + perawatan 1 tahun</span></div>
+      </div>
+    </div>
+    <div class="card unit">
+      <div class="top"><div class="tier"><span class="zh">成建制 · MOBILE</span><span class="en">MOBILE</span><span class="id">Mobile</span></div><h4><span class="zh">移动应急救援单元</span><span class="en">Mobile Rescue Unit</span><span class="id">Unit Penyelamatan Mobile</span></h4></div>
+      <div class="bd">
+        <div class="row"><b><span class="zh">配置：</span><span class="en">Config: </span><span class="id">Konfigurasi: </span></b><span class="zh">指挥/装备车 + 无人机侦察(可选机场) + 水域救援(Dolphin/救生艇) + 破拆与生命探测 + 移动供电照明 + 通信</span><span class="en">Command/equipment vehicle + UAV recon (optional dock) + water rescue (Dolphin/lifeboat) + breaching &amp; life detection + mobile power/lighting + comms</span><span class="id">Kendaraan komando/peralatan + UAV recon (opsional dock) + penyelamatan air (Dolphin/perahu) + pembongkaran &amp; deteksi kehidupan + daya/penerangan mobile + komunikasi</span></div>
+        <div class="row"><b><span class="zh">适用：</span><span class="en">For: </span><span class="id">Untuk: </span></b><span class="zh">市级应急局 / 区域机动队</span><span class="en">City EM bureau / regional mobile team</span><span class="id">Badan EM kota / tim mobile regional</span></div>
+        <div class="invest"><span class="zh">投资概算</span><span class="en">Indicative investment</span><span class="id">Investasi indikatif</span>：<span class="zh">¥500万–1500万 / 单元（估）</span><span class="en">¥5M–15M / unit (est.)</span><span class="id">¥5M–15M / unit (est.)</span></div>
+        <div class="incl">✔ <span class="zh">含系统培训(操作+战术) + 2 年维保 + 备件包</span><span class="en">Incl. system training (ops+tactics) + 2-yr maintenance + spares pack</span><span class="id">Termasuk pelatihan sistem (operasi+taktik) + perawatan 2 tahun + paket suku cadang</span></div>
+      </div>
+    </div>
+    <div class="card unit">
+      <div class="top"><div class="tier"><span class="zh">综合 · REGIONAL</span><span class="en">REGIONAL</span><span class="id">Regional</span></div><h4><span class="zh">区域综合应急中队</span><span class="en">Regional Response Company</span><span class="id">Kompi Respons Regional</span></h4></div>
+      <div class="bd">
+        <div class="row"><b><span class="zh">配置：</span><span class="en">Config: </span><span class="id">Konfigurasi: </span></b><span class="zh">空中(机场+热成像+重载无人机)、水域(Dolphin+消防USV+ROV)、陆地(消防机器人+破拆)、指挥保障与训练装备</span><span class="en">Air (dock+thermal+heavy-lift UAV), water (Dolphin+firefighting USV+ROV), land (fire robot+breaching), command support &amp; training gear</span><span class="id">Udara (dock+thermal+UAV angkut berat), air (Dolphin+USV pemadam+ROV), darat (robot pemadam+pembongkaran), dukungan komando &amp; peralatan pelatihan</span></div>
+        <div class="row"><b><span class="zh">适用：</span><span class="en">For: </span><span class="id">Untuk: </span></b><span class="zh">省级应急管理厅 / 区域应急中心</span><span class="en">Provincial EM dept / regional response center</span><span class="id">Dinas EM provinsi / pusat respons regional</span></div>
+        <div class="invest"><span class="zh">投资概算</span><span class="en">Indicative investment</span><span class="id">Investasi indikatif</span>：<span class="zh">¥3000万–9000万（估）</span><span class="en">¥30M–90M (est.)</span><span class="id">¥30M–90M (est.)</span></div>
+        <div class="incl">✔ <span class="zh">含驻点培训 + 教官培养 + 长期维保合约 + 年度升级</span><span class="en">Incl. on-site training + instructor program + long-term maintenance + annual upgrade</span><span class="id">Termasuk pelatihan di lokasi + program instruktur + perawatan jangka panjang + upgrade tahunan</span></div>
+      </div>
+    </div>
+    <div class="card unit">
+      <div class="top"><div class="tier"><span class="zh">体系 · SYSTEM</span><span class="en">SYSTEM</span><span class="id">Sistem</span></div><h4><span class="zh">省级 / 国家级应急能力体系</span><span class="en">Provincial / National Capability System</span><span class="id">Sistem Kemampuan Provinsi / Nasional</span></h4></div>
+      <div class="bd">
+        <div class="row"><b><span class="zh">配置：</span><span class="en">Config: </span><span class="id">Konfigurasi: </span></b><span class="zh">多个综合中队 + 统一指挥调度平台 + 实训基地/学院 + 区域维保中心</span><span class="en">Multiple companies + unified command platform + training base/academy + regional service center</span><span class="id">Beberapa kompi + platform komando terpadu + basis pelatihan/akademi + pusat perawatan regional</span></div>
+        <div class="row"><b><span class="zh">适用：</span><span class="en">For: </span><span class="id">Untuk: </span></b><span class="zh">国家 / 省级应急管理部门</span><span class="en">National / provincial EM authority</span><span class="id">Otoritas EM nasional / provinsi</span></div>
+        <div class="invest"><span class="zh">投资概算</span><span class="en">Indicative investment</span><span class="id">Investasi indikatif</span>：<span class="zh">¥1亿+（多年期，估）</span><span class="en">¥100M+ (multi-year, est.)</span><span class="id">¥100M+ (multi-tahun, est.)</span></div>
+        <div class="incl">✔ <span class="zh">含培训学院 + 全周期维保升级 + 本地化组装合作(远期)</span><span class="en">Incl. training academy + full-lifecycle maintenance/upgrade + local-assembly cooperation (long-term)</span><span class="id">Termasuk akademi pelatihan + perawatan/upgrade siklus penuh + kerja sama perakitan lokal (jangka panjang)</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:22px"><b><span class="zh">为什么按“单元”卖？</span><span class="en">Why sell by &#x27;unit&#x27;?</span><span class="id">Mengapa jual per &#x27;unit&#x27;?</span></b> <span class="zh">成建制能力单元贴合政府“配齐一支队伍/一个中队”的采购逻辑，单值更高、决策更清晰；同时天然捆绑培训与维保，形成长期服务关系。</span><span class="en">Force-package units match how governments procure (&#x27;equip a team/company&#x27;): higher ticket, clearer decisions, and they naturally bundle training &amp; maintenance into a long-term service relationship.</span><span class="id">Unit paket kemampuan sesuai logika pengadaan pemerintah (&#x27;lengkapi tim/kompi&#x27;): nilai lebih tinggi, keputusan lebih jelas; &amp; secara alami mengikat pelatihan &amp; perawatan dalam hubungan layanan jangka panjang.</span></div>
+</div></section>
+<section id="service"><div class="wrap">
+  <div class="sec-head"><span class="no">07</span><h2><span class="zh">培训赋能与运维服务体系</span><span class="en">Training &amp; Maintenance/Service System</span><span class="id">Sistem Pelatihan &amp; Layanan Perawatan</span></h2></div>
+  <p class="sec-sub"><span class="zh">这是方案的核心，也是长期、稳定、高毛利的经常性收入来源。</span><span class="en">The core of the offering and the source of long-term, stable, high-margin recurring revenue.</span><span class="id">Inti dari penawaran &amp; sumber pendapatan berulang jangka panjang, stabil &amp; margin tinggi.</span></p>
+  <div class="svc">
+    <div class="col"><h3><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red)"></span><span class="zh">培训赋能</span><span class="en">Training &amp; Enablement</span><span class="id">Pelatihan &amp; Pemberdayaan</span></h3>
+      <div class="it"><b><span class="zh">操作员认证培训</span><span class="en">Operator Certification</span><span class="id">Sertifikasi Operator</span></b><span><span class="zh">标准化操作与安全规程，持证上岗</span><span class="en">Standardized operation &amp; safety procedures, certified operators</span><span class="id">Operasi standar &amp; prosedur keselamatan, operator bersertifikat</span></span></div>
+      <div class="it"><b><span class="zh">教官培养（TtT）</span><span class="en">Train-the-Trainer</span><span class="id">Train-the-Trainer</span></b><span><span class="zh">培养本地教官，实现自主复训</span><span class="en">Build local instructors for self-sustained retraining</span><span class="id">Membangun instruktur lokal untuk pelatihan ulang mandiri</span></span></div>
+      <div class="it"><b><span class="zh">维修技师培训</span><span class="en">Maintenance Technician Training</span><span class="id">Pelatihan Teknisi Perawatan</span></b><span><span class="zh">建立本地一/二级维修能力</span><span class="en">Establish local L1/L2 repair capability</span><span class="id">Membangun kemampuan perbaikan L1/L2 lokal</span></span></div>
+      <div class="it"><b><span class="zh">实战演练与桌面推演</span><span class="en">Drills &amp; Tabletop Exercises</span><span class="id">Latihan &amp; Simulasi Meja</span></b><span><span class="zh">多灾种联合演练，检验战法</span><span class="en">Multi-hazard joint drills to validate tactics</span><span class="id">Latihan gabungan multi-bencana untuk memvalidasi taktik</span></span></div>
+      <div class="it"><b><span class="zh">培训基地/学院共建</span><span class="en">Training Base / Academy Co-build</span><span class="id">Pembangunan Basis/Akademi Pelatihan</span></b><span><span class="zh">共建实训基地与课程体系</span><span class="en">Co-build training base &amp; curriculum</span><span class="id">Membangun basis pelatihan &amp; kurikulum bersama</span></span></div>
+    </div>
+    <div class="col"><h3><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green)"></span><span class="zh">运维 · 维保 · 升级</span><span class="en">O&amp;M · Maintenance · Upgrade</span><span class="id">Perawatan · Pemeliharaan · Upgrade</span></h3>
+      <div class="it"><b><span class="zh">年度维保合约</span><span class="en">Annual Maintenance Contract</span><span class="id">Kontrak Perawatan Tahunan</span></b><span><span class="zh">按装备价值比例，经常性收入</span><span class="en">% of equipment value, recurring revenue</span><span class="id">% nilai peralatan, pendapatan berulang</span></span></div>
+      <div class="it"><b><span class="zh">备件供应与快速响应</span><span class="en">Spares &amp; Rapid Response</span><span class="id">Suku Cadang &amp; Respons Cepat</span></b><span><span class="zh">本地备件库 + SLA 响应</span><span class="en">Local spares + SLA response</span><span class="id">Suku cadang lokal + respons SLA</span></span></div>
+      <div class="it"><b><span class="zh">远程诊断与软件升级</span><span class="en">Remote Diagnostics &amp; SW Upgrade</span><span class="id">Diagnosis Remote &amp; Upgrade SW</span></b><span><span class="zh">在线诊断、固件/软件更新</span><span class="en">Online diagnostics, firmware/SW updates</span><span class="id">Diagnosis online, update firmware/SW</span></span></div>
+      <div class="it"><b><span class="zh">装备升级换代</span><span class="en">Hardware Upgrade &amp; Refresh</span><span class="id">Upgrade &amp; Refresh Perangkat</span></b><span><span class="zh">模块升级与整机换代</span><span class="en">Module upgrade &amp; equipment refresh</span><span class="id">Upgrade modul &amp; refresh peralatan</span></span></div>
+      <div class="it"><b><span class="zh">本地维保中心</span><span class="en">Local Service Center</span><span class="id">Pusat Perawatan Lokal</span></b><span><span class="zh">区域维保中心 + 培训中心</span><span class="en">Regional service + training center</span><span class="id">Pusat perawatan regional + pelatihan</span></span></div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:22px"><b><span class="zh">卖方案，更卖陪伴。</span><span class="en">Sell the solution — and the partnership.</span><span class="id">Jual solusi — &amp; kemitraan.</span></b> <span class="zh">装备是入口，培训让客户用得起来，维保/升级让能力持续在线。培训与维保是经常性收入，随装机基数滚动累积，构成现金流与竞争壁垒。</span><span class="en">Equipment is the entry point; training makes it usable; maintenance/upgrade keeps capability online. Training &amp; maintenance are recurring revenue that compounds with the installed base, forming cash flow and a competitive moat.</span><span class="id">Peralatan adalah titik masuk; pelatihan membuatnya dapat digunakan; perawatan/upgrade menjaga kemampuan online. Pelatihan &amp; perawatan adalah pendapatan berulang yang berkembang dengan basis terpasang, membentuk arus kas &amp; parit kompetitif.</span></div>
+</div></section>
+<section id="process"><div class="wrap">
+  <div class="sec-head"><span class="no">08</span><h2><span class="zh">全流程业务计划</span><span class="en">End-to-End Business Plan</span><span class="id">Rencana Bisnis End-to-End</span></h2></div>
+  <p class="sec-sub"><span class="zh">从交流会到复购扩展——一张图看清完整业务闭环。</span><span class="en">From the forum to repeat expansion — the full business loop at a glance.</span><span class="id">Dari forum hingga perluasan berulang — siklus bisnis penuh dalam sekilas.</span></p>
+  <div class="proc">
+    <div class="st"><div class="num">1</div><h4><span class="zh">商务开发与合作框架</span><span class="en">Business Development &amp; Cooperation Framework</span><span class="id">Pengembangan Bisnis &amp; Kerangka Kerja Sama</span></h4><p><span class="zh">锁定供应商代理权；与 PHAS 签署合作及服务框架协议。</span><span class="en">Secure supplier agency rights; sign cooperation &amp; service framework with PHAS.</span><span class="id">Mendapatkan hak agen pemasok; menandatangani kerja sama &amp; kerangka layanan dengan PHAS.</span></p></div>
+    <div class="st"><div class="num">2</div><h4><span class="zh">GTG 技术交流会与意向</span><span class="en">GTG Technical Forum &amp; Intent</span><span class="id">Forum Teknis GTG &amp; Niat</span></h4><p><span class="zh">代表团访华、现场演示，达成合作意向 / MoU。</span><span class="en">Delegation visit &amp; live demo; reach cooperation intent / MoU.</span><span class="id">Kunjungan delegasi &amp; demo langsung; mencapai niat kerja sama / MoU.</span></p></div>
+    <div class="st"><div class="num">3</div><h4><span class="zh">需求调研与方案设计</span><span class="en">Needs Assessment &amp; Solution Design</span><span class="id">Penilaian Kebutuhan &amp; Desain Solusi</span></h4><p><span class="zh">按场景设计应急能力单元，形成成套方案与报价。</span><span class="en">Design capability units by scenario; produce bundled solutions &amp; quotations.</span><span class="id">Desain unit kemampuan berdasarkan skenario; menghasilkan solusi terpaket &amp; penawaran harga.</span></p></div>
+    <div class="st"><div class="num">4</div><h4><span class="zh">认证与市场准入</span><span class="en">Certification &amp; Market Access</span><span class="id">Sertifikasi &amp; Akses Pasar</span></h4><p><span class="zh">SNI 认证、进口许可、型式核准、政府采购清单准入。</span><span class="en">SNI certification, import permits, type approval, procurement-list access.</span><span class="id">Sertifikasi SNI, izin impor, persetujuan tipe, akses daftar pengadaan.</span></p></div>
+    <div class="st"><div class="num">5</div><h4><span class="zh">设备供应与物流交付</span><span class="en">Equipment Supply &amp; Logistics Delivery</span><span class="id">Pasokan Peralatan &amp; Pengiriman Logistik</span></h4><p><span class="zh">集中采购、国际物流、清关与本地仓储交付。</span><span class="en">Consolidated sourcing, international logistics, customs clearance &amp; local warehousing delivery.</span><span class="id">Pengadaan terkonsolidasi, logistik internasional, bea cukai &amp; pengiriman gudang lokal.</span></p></div>
+    <div class="st"><div class="num">6</div><h4><span class="zh">现场培训与验收</span><span class="en">On-Site Training &amp; Acceptance</span><span class="id">Pelatihan di Lokasi &amp; Penerimaan</span></h4><p><span class="zh">操作培训、战术演练、系统联调与验收交付。</span><span class="en">Operator training, tactical drills, system integration &amp; acceptance delivery.</span><span class="id">Pelatihan operator, latihan taktis, integrasi sistem &amp; pengiriman penerimaan.</span></p></div>
+    <div class="st"><div class="num">7</div><h4><span class="zh">长期维保与复购扩展</span><span class="en">Long-Term Maintenance &amp; Repeat Expansion</span><span class="id">Perawatan Jangka Panjang &amp; Perluasan Berulang</span></h4><p><span class="zh">年度维保合约、备件供应、装备升级、新单元增购。</span><span class="en">Annual maintenance contracts, spares supply, equipment upgrades, new unit additions.</span><span class="id">Kontrak perawatan tahunan, pasokan suku cadang, upgrade peralatan, penambahan unit baru.</span></p></div>
+  </div>
+</div></section>
+<section id="conf"><div class="wrap">
+  <div class="sec-head"><span class="no">09</span><h2><span class="zh">GTG 技术交流会方案</span><span class="en">GTG Technical Forum Plan</span><span class="id">Rencana Forum Teknis GTG</span></h2></div>
+  <p class="sec-sub"><span class="zh">小型 · 印尼方8–12人 · 2–3天 · 在华举办。这是切入印尼应急救援市场的关键第一步。</span><span class="en">Small · 8–12 from Indonesia · 2–3 days · in China. This is the critical first step into the Indonesia emergency rescue market.</span><span class="id">Kecil · 8–12 dari Indonesia · 2–3 hari · di China. Ini adalah langkah pertama kritis ke pasar penyelamatan darurat Indonesia.</span></p>
+  <div class="callout blue">
+    <h4 style="margin-bottom:10px"><span class="zh">GTG 交流会定位</span><span class="en">GTG Forum Positioning</span><span class="id">Posisi Forum GTG</span></h4>
+    <p><span class="zh">本次 GTG 技术交流会不是普通商务拜访，而是<b>以政府间技术合作框架为背书</b>的正式展示平台。通过现场设备演示、中方技术专家讲解、印尼代表团实地观摩，建立信任、展示能力、达成合作意向。交流会的成功举办，将为后续的设备采购、培训合作与长期维保协议奠定坚实基础。</span><span class="en">This GTG technical forum is not an ordinary business visit, but a formal demonstration platform <b>backed by an inter-governmental technical cooperation framework</b>. Through live equipment demonstrations, technical expert briefings by Chinese specialists, and on-site observation by the Indonesian delegation, we build trust, showcase capabilities, and reach cooperation intent. The successful hosting of this forum will lay a solid foundation for subsequent equipment procurement, training cooperation, and long-term maintenance agreements.</span><span class="id">Forum teknis GTG ini bukan kunjungan bisnis biasa, tetapi platform demonstrasi formal <b>didukung oleh kerangka kerja sama teknis antar-pemerintah</b>. Melalui demo peralatan langsung, paparan ahli teknis China, &amp; observasi di lokasi oleh delegasi Indonesia, kita membangun kepercayaan, menampilkan kemampuan, &amp; mencapai niat kerja sama. Penyelenggaraan forum yang sukses akan meletakkan fondasi kokoh untuk pengadaan peralatan berikutnya, kerja sama pelatihan, &amp; perjanjian perawatan jangka panjang.</span></p>
+  </div>
+  <h3><span class="zh">交流会三大目标</span><span class="en">Three Forum Objectives</span><span class="id">Tiga Tujuan Forum</span></h3>
+  <div class="gtg-track">
+    <div class="gtg-card"><span class="badge"><span class="zh">目标一</span><span class="en">Objective 1</span><span class="id">Tujuan 1</span></span>
+      <h5><span class="zh">建立信任</span><span class="en">Build Trust</span><span class="id">Bangun Kepercayaan</span></h5>
+      <p><span class="zh">通过高规格接待、现场演示与工厂参观，让印尼代表团直观感受中国应急救援装备的技术水准与PolarRay的服务能力。</span><span class="en">Through high-standard hosting, live demonstrations and factory visits, let the Indonesian delegation directly experience the technical level of China&#x27;s emergency rescue equipment and PolarRay&#x27;s service capabilities.</span><span class="id">Melalui hosting standar tinggi, demo langsung &amp; kunjungan pabrik, biarkan delegasi Indonesia secara langsung merasakan tingkat teknis peralatan penyelamatan darurat China &amp; kemampuan layanan PolarRay.</span></p>
+    </div>
+    <div class="gtg-card"><span class="badge"><span class="zh">目标二</span><span class="en">Objective 2</span><span class="id">Tujuan 2</span></span>
+      <h5><span class="zh">达成合作意向</span><span class="en">Reach Cooperation Intent</span><span class="id">Capai Niat Kerja Sama</span></h5>
+      <p><span class="zh">签署合作意向书(MoU)，明确双方在设备供应、技术培训、维保服务方面的合作框架与下一步行动时间表。</span><span class="en">Sign a Memorandum of Understanding (MoU) clarifying the cooperation framework and next-step timeline for equipment supply, technical training, and maintenance services between both parties.</span><span class="id">Menandatangani MoU yang memperjelas kerangka kerja sama &amp; jadwal langkah berikutnya untuk pasokan peralatan, pelatihan teknis, &amp; layanan perawatan antara kedua belah pihak.</span></p>
+    </div>
+    <div class="gtg-card"><span class="badge"><span class="zh">目标三</span><span class="en">Objective 3</span><span class="id">Tujuan 3</span></span>
+      <h5><span class="zh">锁定代理与供应商</span><span class="en">Lock Agencies &amp; Suppliers</span><span class="id">Kunci Agen &amp; Pemasok</span></h5>
+      <p><span class="zh">在交流会期间与核心供应商敲定独家/区域代理意向，确保PolarRay在印尼市场的供应链优势。</span><span class="en">During the forum, finalize exclusive/regional agency intentions with core suppliers to ensure PolarRay&#x27;s supply chain advantage in the Indonesian market.</span><span class="id">Selama forum, finalisasi niat agen eksklusif/regional dengan pemasok inti untuk memastikan keunggulan rantai pasok PolarRay di pasar Indonesia.</span></p>
+    </div>
+  </div>
+  <h3><span class="zh">基础开销概算（人民币，全口径）</span><span class="en">Base Budget (¥, full scope)</span><span class="id">Anggaran Dasar (¥, lingkup penuh)</span></h3>
+  <div class="tablewrap"><table class="t-budget">
+    <thead><tr><th><span class="zh">项目</span><span class="en">Item</span><span class="id">Item</span></th><th><span class="zh">说明</span><span class="en">Detail</span><span class="id">Detail</span></th><th class="num"><span class="zh">金额(¥)</span><span class="en">Amount (¥)</span><span class="id">Jumlah (¥)</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="zh">接送机及城市包车</span><span class="en">Airport transfer &amp; city vans</span><span class="id">Transfer bandara &amp; van kota</span></td><td><span class="zh">商务MPVx2，3天</span><span class="en">2 MPVs, 3 days</span><span class="id">2 MPV, 3 hari</span></td><td class="num">18,000</td></tr>
+      <tr><td><span class="zh">酒店住宿</span><span class="en">Hotel accommodation</span><span class="id">Akomodasi hotel</span></td><td><span class="zh">12间x3晚x¥850</span><span class="en">12 rms x3 nts x¥850</span><span class="id">12 kamar x3 mlm x¥850</span></td><td class="num">30,600</td></tr>
+      <tr><td><span class="zh">正餐与工作餐</span><span class="en">Meals &amp; working lunches</span><span class="id">Makan &amp; makan siang kerja</span></td><td><span class="zh">约20人x3天</span><span class="en">~20 pax x3 days</span><span class="id">~20 orang x3 hari</span></td><td class="num">24,000</td></tr>
+      <tr><td><span class="zh">欢迎及答谢晚宴</span><span class="en">Welcome &amp; farewell banquets</span><span class="id">Jamuan selamat datang &amp; perpisahan</span></td><td><span class="zh">2场高规格</span><span class="en">2 premium dinners</span><span class="id">2 jamuan premium</span></td><td class="num">30,000</td></tr>
+      <tr><td><span class="zh">会议场地+AV+布展</span><span class="en">Venue + AV + staging</span><span class="id">Venue + AV + panggung</span></td><td><span class="zh">2天，含同传间</span><span class="en">2 days, w/ booth</span><span class="id">2 hari, dgn booth</span></td><td class="num">40,000</td></tr>
+      <tr><td><span class="zh">同声传译</span><span class="en">Simultaneous interpretation</span><span class="id">Interpretasi simultan</span></td><td><span class="zh">中-印尼/英，2人x2天</span><span class="en">ZH–ID/EN, 2x2 days</span><span class="id">ZH–ID/EN, 2 orang x2 hari</span></td><td class="num">28,000</td></tr>
+      <tr><td><span class="zh">产品现场演示与实操</span><span class="en">Live product demo &amp; trials</span><span class="id">Demo produk langsung &amp; uji coba</span></td><td><span class="zh">场地/运输/安全/保险</span><span class="en">Site/logistics/safety/insurance</span><span class="id">Lokasi/logistik/keselamatan/asuransi</span></td><td class="num">80,000</td></tr>
+      <tr><td><span class="zh">工厂/产业基地参观</span><span class="en">Factory / base visit</span><span class="id">Kunjungan pabrik / basis</span></td><td><span class="zh">交通+接待</span><span class="en">Transport + hosting</span><span class="id">Transport + hosting</span></td><td class="num">20,000</td></tr>
+      <tr><td><span class="zh">方案手册/翻译/印刷/展具</span><span class="en">Brochures/translation/print/booth</span><span class="id">Brosur/terjemahan/cetak/booth</span></td><td><span class="zh">三语资料</span><span class="en">Trilingual materials</span><span class="id">Materi tiga bahasa</span></td><td class="num">25,000</td></tr>
+      <tr><td><span class="zh">商务礼品/伴手礼</span><span class="en">Business gifts</span><span class="id">Hadiah bisnis</span></td><td><span class="zh">高规格</span><span class="en">Premium</span><span class="id">Premium</span></td><td class="num">15,000</td></tr>
+      <tr><td><span class="zh">应急备用金</span><span class="en">Contingency</span><span class="id">Dana darurat</span></td><td><span class="zh">5%</span><span class="en">5%</span><span class="id">5%</span></td><td class="num">15,530</td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="2"><span class="zh">全口径概算（计入业务拓展成本）</span><span class="en">Total (booked as business-development cost)</span><span class="id">Total (dicatat sebagai biaya pengembangan bisnis)</span></td><td class="num">326,130</td></tr></tfoot>
+  </table></div>
+  <div class="callout" style="margin-top:18px"><b><span class="zh">费用归属：</span><span class="en">Cost treatment: </span><span class="id">Pengeluaran: </span></b><span class="zh">本次交流会属于PolarRay为Pak Sumar公司提供的<b>业务拓展服务</b>，统一计入服务成本；其中产品演示等环节可由拟代理的供应商赞助支持。<b>具体分担方式由双方另行商定</b>。</span><span class="en">This forum is a <b>business development service</b> provided by PolarRay for Pak Sumar&#x27;s company, booked as service cost; demo-related items can be supported by prospective-agency suppliers. <b>The specific sharing arrangement will be decided separately.</b></span><span class="id">Forum ini adalah <b>layanan pengembangan bisnis</b> yang disediakan PolarRay untuk perusahaan Pak Sumar, dicatat sebagai biaya layanan; item terkait demo dapat didukung oleh pemasok calon agen. <b>Pembagian spesifik akan ditentukan terpisah.</b></span></div>
+  <p style="font-size:12.5px;color:var(--muted);margin-top:12px"><span class="zh">备注：① 印尼代表团国际机票按 GTG 常规由印尼方自理。② 中型规模(15–25人/3–4天)全口径约 ¥60–80 万。③ 三语资料（中/英/印尼）是重点投入，确保每位代表带回去的都是专业级方案文档。</span><span class="en">Notes: ① International airfare borne by the Indonesian side per GTG norm. ② Medium scale (15–25 pax / 3–4 days) ≈ ¥600k–800k total. ③ Trilingual materials (ZH/EN/ID) are a key investment to ensure every delegate takes back professional-grade proposal documents.</span><span class="id">Catatan: ① Tiket internasional ditanggung pihak Indonesia sesuai norma GTG. ② Skala menengah (15–25 orang / 3–4 hari) ≈ ¥600k–800k total. ③ Materi tiga bahasa (ZH/EN/ID) adalah investasi kunci untuk memastikan setiap delegasi membawa dokumen proposal berkelas profesional.</span></p>
+  <h3><span class="zh">详细行程与议程（3天2.5工作日）</span><span class="en">Detailed Itinerary &amp; Agenda (3 days / 2.5 working days)</span><span class="id">Itinerari &amp; Agenda Detail (3 hari / 2.5 hari kerja)</span></h3>
+  <div class="day">
+    <div class="dh"><span class="badge">Day 0</span><span class="zh">抵达与破冰</span><span class="en">Arrival &amp; Icebreaker</span><span class="id">Kedatangan &amp; Icebreaker</span><span class="sub"><span class="zh">代表团抵华</span><span class="en">Delegation arrives</span><span class="id">Delegasi tiba</span></span></div>
+    <div class="items">
+      <div class="ai"><div class="tm"><span class="zh">全天</span><span class="en">All day</span><span class="id">Sepanjang hari</span></div><div class="ct"><b><span class="zh">机场接机 · 入住高级酒店</span><span class="en">Airport pickup · hotel check-in</span><span class="id">Penjemputan bandara · check-in hotel</span></b><small><span class="zh">专车接送、礼宾对接、三语手册发放</span><span class="en">Vehicles, protocol, trilingual handbooks</span><span class="id">Kendaraan, protokol, handbook tiga bahasa</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">19:00</span><span class="en">19:00</span><span class="id">19:00</span></div><div class="ct"><b><span class="zh">欢迎晚宴</span><span class="en">Welcome banquet</span><span class="id">Jamuan selamat datang</span></b><small><span class="zh">PHAS与PolarRay共同主持，破冰建立信任</span><span class="en">Hosted by PHAS &amp; PolarRay; build rapport</span><span class="id">Dihost oleh PHAS &amp; PolarRay; membangun kepercayaan</span></small></div></div>
+    </div>
+  </div>
+  <div class="day">
+    <div class="dh"><span class="badge">Day 1</span><span class="zh">技术交流会（正式）</span><span class="en">Technical Forum (Formal)</span><span class="id">Forum Teknis (Formal)</span><span class="sub"><span class="zh">政策框架+解决方案</span><span class="en">Policy + solutions</span><span class="id">Kebijakan + solusi</span></span></div>
+    <div class="items">
+      <div class="ai"><div class="tm"><span class="zh">09:00</span><span class="en">09:00</span><span class="id">09:00</span></div><div class="ct"><b><span class="zh">开幕与双方致辞</span><span class="en">Opening &amp; remarks</span><span class="id">Pembukaan &amp; sambutan</span></b><small><span class="zh">Pak Sumar/PHAS、PolarRay、嘉宾致辞；合影</span><span class="en">PHAS, PolarRay, guest remarks; group photo</span><span class="id">PHAS, PolarRay, sambutan tamu; foto bersama</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">09:40</span><span class="en">09:40</span><span class="id">09:40</span></div><div class="ct"><b><span class="zh">GTG框架与中国应急产业概览</span><span class="en">GTG framework &amp; China EM industry</span><span class="id">Kerangka GTG &amp; industri EM China</span></b><small><span class="zh">合作机制与产业能力介绍</span><span class="en">Cooperation mechanism &amp; capabilities</span><span class="id">Presentasi mekanisme kerja sama &amp; kemampuan</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">10:40</span><span class="en">10:40</span><span class="id">10:40</span></div><div class="ct"><b><span class="zh">茶歇</span><span class="en">Coffee break</span><span class="id">Istirahat kopi</span></b><small><span class="zh">三语资料交换</span><span class="en">Trilingual material exchange</span><span class="id">Pertukaran materi tiga bahasa</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">11:00</span><span class="en">11:00</span><span class="id">11:00</span></div><div class="ct"><b><span class="zh">PolarRay解决方案体系介绍</span><span class="en">PolarRay solution system overview</span><span class="id">Ikhtisar sistem solusi PolarRay</span></b><small><span class="zh">五大场景、四级单元、培训+维保体系</span><span class="en">Five scenarios, four tiers, training+maintenance</span><span class="id">Lima skenario, empat tingkat, pelatihan+perawatan</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">12:00</span><span class="en">12:00</span><span class="id">12:00</span></div><div class="ct"><b><span class="zh">工作午餐</span><span class="en">Working lunch</span><span class="id">Makan siang kerja</span></b><small><span class="zh">双方核心团队自由交流</span><span class="en">Core teams free exchange</span><span class="id">Pertukaran bebas tim inti</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">14:00</span><span class="en">14:00</span><span class="id">14:00</span></div><div class="ct"><b><span class="zh">核心产品现场演示</span><span class="en">Core product live demo</span><span class="id">Demo langsung produk inti</span></b><small><span class="zh">生命探测、破拆、消防机器人、无人机等实物演示</span><span class="en">Life detection, breaching, fire robot, UAV live demos</span><span class="id">Demo langsung deteksi kehidupan, pembongkaran, robot pemadam, UAV</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">16:00</span><span class="en">16:00</span><span class="id">16:00</span></div><div class="ct"><b><span class="zh">印尼代表团实操体验</span><span class="en">Indonesian delegation hands-on</span><span class="id">Praktik langsung delegasi Indonesia</span></b><small><span class="zh">代表亲自操作设备，中方专家一对一指导</span><span class="en">Delegates operate equipment; Chinese experts one-on-one coaching</span><span class="id">Delegasi mengoperasikan peralatan; ahli China membimbing satu-satu</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">17:30</span><span class="en">17:30</span><span class="id">17:30</span></div><div class="ct"><b><span class="zh">当日总结与答疑</span><span class="en">Daily summary &amp; Q&amp;A</span><span class="id">Ringkasan harian &amp; Tanya Jawab</span></b><small><span class="zh">就方案、价格、交付周期进行初步沟通</span><span class="en">Initial discussion on solutions, pricing, delivery timelines</span><span class="id">Diskusi awal tentang solusi, harga, jadwal pengiriman</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">18:30</span><span class="en">18:30</span><span class="id">18:30</span></div><div class="ct"><b><span class="zh">答谢晚宴</span><span class="en">Farewell banquet</span><span class="id">Jamuan perpisahan</span></b><small><span class="zh">高规格，深化私人关系</span><span class="en">Premium; deepen personal relationships</span><span class="id">Premium; memperdalam hubungan pribadi</span></small></div></div>
+    </div>
+  </div>
+  <div class="day">
+    <div class="dh"><span class="badge">Day 2</span><span class="zh">工厂参观与深度考察</span><span class="en">Factory Visit &amp; Deep Inspection</span><span class="id">Kunjungan Pabrik &amp; Inspeksi Mendalam</span><span class="sub"><span class="zh">供应链+制造能力</span><span class="en">Supply chain + manufacturing</span><span class="id">Rantai pasok + manufaktur</span></span></div>
+    <div class="items">
+      <div class="ai"><div class="tm"><span class="zh">09:00</span><span class="en">09:00</span><span class="id">09:00</span></div><div class="ct"><b><span class="zh">出发前往工厂/产业基地</span><span class="en">Depart for factory/industrial base</span><span class="id">Berangkat ke pabrik/basis industri</span></b><small><span class="zh">考察核心供应商生产线与质量控制</span><span class="en">Inspect core supplier production lines &amp; QC</span><span class="id">Inspeksi lini produksi &amp; QC pemasok inti</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">10:30</span><span class="en">10:30</span><span class="id">10:30</span></div><div class="ct"><b><span class="zh">生产线参观</span><span class="en">Production line tour</span><span class="id">Tur lini produksi</span></b><small><span class="zh">见证装备从零部件到整机的制造流程</span><span class="en">Witness manufacturing from components to finished equipment</span><span class="id">Saksikan manufaktur dari komponen ke peralatan jadi</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">12:00</span><span class="en">12:00</span><span class="id">12:00</span></div><div class="ct"><b><span class="zh">工厂午餐</span><span class="en">Factory lunch</span><span class="id">Makan siang pabrik</span></b><small><span class="zh">与供应商技术负责人面对面交流</span><span class="en">Face-to-face with supplier technical leaders</span><span class="id">Bertemu langsung dengan pemimpin teknis pemasok</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">14:00</span><span class="en">14:00</span><span class="id">14:00</span></div><div class="ct"><b><span class="zh">质量控制与测试演示</span><span class="en">QC &amp; testing demonstration</span><span class="id">Demo QC &amp; pengujian</span></b><small><span class="zh">观看出厂前测试、环境适应性试验</span><span class="en">Watch pre-delivery tests &amp; environmental adaptability trials</span><span class="id">Saksikan tes pra-pengiriman &amp; uji adaptabilitas lingkungan</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">16:00</span><span class="en">16:00</span><span class="id">16:00</span></div><div class="ct"><b><span class="zh">合作意向讨论</span><span class="en">Cooperation intent discussion</span><span class="id">Diskusi niat kerja sama</span></b><small><span class="zh">与供应商就代理权、价格、交付条款进行三方会谈</span><span class="en">Trilateral talks with suppliers on agency rights, pricing, delivery terms</span><span class="id">Pembicaraan trilateral dengan pemasok tentang hak agen, harga, syarat pengiriman</span></small></div></div>
+      <div class="ai"><div class="tm"><span class="zh">18:00</span><span class="en">18:00</span><span class="id">18:00</span></div><div class="ct"><b><span class="zh">返回酒店</span><span class="en">Return to hotel</span><span class="id">Kembali ke hotel</span></b><small><span class="zh">整理当日收获，准备返程</span><span class="en">Organize day&#x27;s takeaways, prepare for departure</span><span class="id">Rangkum hasil hari ini, persiapkan kepulangan</span></small></div></div>
+    </div>
+  </div>
+  <div class="callout purple" style="margin-top:18px">
+    <h4 style="margin-bottom:10px"><span class="zh">会后跟进机制</span><span class="en">Post-Forum Follow-Up Mechanism</span><span class="id">Mekanisme Tindak Lanjut Pasca-Forum</span></h4>
+    <p><span class="zh">① 7日内：PolarRay 整理会议纪要、产品资料与报价方案，以三语形式提交 PHAS。 ② 14日内：双方确认合作意向书(MoU)条款，启动供应商代理谈判。 ③ 30日内：完成首批意向设备的供应商代理权锁定，形成可交付方案。 ④ 60日内：根据 GTG 交流成果，向印尼相关政府部门提交正式合作方案与设备清单。</span><span class="en">① Within 7 days: PolarRay compiles meeting minutes, product materials and quotations in trilingual form for PHAS. ② Within 14 days: Both parties confirm MoU terms and initiate supplier agency negotiations. ③ Within 30 days: Lock in agency rights for first-batch intended equipment and form deliverable solutions. ④ Within 60 days: Based on GTG forum results, submit formal cooperation proposals and equipment lists to relevant Indonesian government agencies.</span><span class="id">① Dalam 7 hari: PolarRay menyusun notula rapat, materi produk &amp; penawaran harga dalam bentuk tiga bahasa untuk PHAS. ② Dalam 14 hari: Kedua belah pihak mengonfirmasi syarat MoU &amp; memulai negosiasi agen pemasok. ③ Dalam 30 hari: Mengunci hak agen untuk peralatan batch pertama &amp; membentuk solusi yang dapat disampaikan. ④ Dalam 60 hari: Berdasarkan hasil forum GTG, mengajukan proposal kerja sama formal &amp; daftar peralatan ke badan pemerintah Indonesia terkait.</span></p>
+  </div>
+</div></section>
+<section id="coop"><div class="wrap">
+  <div class="sec-head"><span class="no">10</span><h2><span class="zh">业务合作细节</span><span class="en">Business Cooperation Details</span><span class="id">Detail Kerja Sama Bisnis</span></h2></div>
+  <p class="sec-sub"><span class="zh">PolarRay 与 Pak Sumar 的公司的合作不是一次性买卖，而是建立在长期信任基础上的深度服务伙伴关系。以下条款将在服务合同中明确约定。</span><span class="en">PolarRay&#x27;s cooperation with Pak Sumar&#x27;s company is not a one-time transaction, but a deep service partnership built on long-term trust. The following terms will be explicitly stipulated in the service contract.</span><span class="id">Kerja sama PolarRay dengan perusahaan Pak Sumar bukan transaksi satu kali, tetapi kemitraan layanan mendalam yang dibangun pada kepercayaan jangka panjang. Syarat berikut akan diatur secara eksplisit dalam kontrak layanan.</span></p>
+  <div class="coop-detail">
+    <div class="coop-card">
+      <h5><span class="zh">设备供应与定价机制</span><span class="en">Equipment Supply &amp; Pricing Mechanism</span><span class="id">Mekanisme Pasokan Peralatan &amp; Harga</span></h5>
+      <ul>
+        <li><span class="zh">PolarRay 负责与中国制造商谈判，获取最优出厂价与区域代理权。</span><span class="en">PolarRay is responsible for negotiating with Chinese manufacturers to obtain optimal factory prices and regional agency rights.</span><span class="id">PolarRay bertanggung jawab untuk bernegosiasi dengan produsen China untuk mendapatkan harga pabrik optimal &amp; hak agen regional.</span></li>
+        <li><span class="zh">Pak Sumar 的公司以进口商/经销商身份面向印尼政府/机构销售，享受本地化服务溢价。</span><span class="en">Pak Sumar&#x27;s company sells to Indonesian government/agencies as importer/distributor, enjoying localized service premium.</span><span class="id">Perusahaan Pak Sumar menjual ke pemerintah/badan Indonesia sebagai importir/distributor, menikmati premium layanan lokal.</span></li>
+        <li><span class="zh">双方约定设备供应价差分成：PolarRay 获得供应链服务费，Pak Sumar 的公司获得本地销售利润。</span><span class="en">Both parties agree on equipment supply margin sharing: PolarRay receives supply chain service fees, Pak Sumar&#x27;s company obtains local sales profit.</span><span class="id">Kedua belah pihak menyetujui pembagian margin pasokan peralatan: PolarRay menerima biaya layanan rantai pasok, perusahaan Pak Sumar memperoleh keuntungan penjualan lokal.</span></li>
+      </ul>
+    </div>
+    <div class="coop-card">
+      <h5><span class="zh">技术培训与能力转移</span><span class="en">Technical Training &amp; Capability Transfer</span><span class="id">Pelatihan Teknis &amp; Transfer Kemampuan</span></h5>
+      <ul>
+        <li><span class="zh">PolarRay 提供中方技术专家赴印尼现场培训，培训费用由服务合同覆盖。</span><span class="en">PolarRay provides Chinese technical experts for on-site training in Indonesia, with training costs covered by the service contract.</span><span class="id">PolarRay menyediakan ahli teknis China untuk pelatihan di lokasi di Indonesia, dengan biaya pelatihan ditanggung kontrak layanan.</span></li>
+        <li><span class="zh">培训内容分层：操作员级（基础操作）、教官级（Train-the-Trainer）、技师级（维修保养）。</span><span class="en">Training content is tiered: operator level (basic operation), instructor level (Train-the-Trainer), technician level (maintenance &amp; repair).</span><span class="id">Konten pelatihan bertingkat: level operator (operasi dasar), level instruktur (Train-the-Trainer), level teknisi (perawatan &amp; perbaikan).</span></li>
+        <li><span class="zh">目标：在3年内为 Pak Sumar 的公司培养一批本地技术骨干，实现70%以上常见故障的本地修复。</span><span class="en">Goal: Within 3 years, cultivate a group of local technical backbone for Pak Sumar&#x27;s company, achieving 70%+ local repair of common faults.</span><span class="id">Tujuan: Dalam 3 tahun, membina kelompok tulang punggung teknis lokal untuk perusahaan Pak Sumar, mencapai perbaikan lokal 70%+ untuk kesalahan umum.</span></li>
+      </ul>
+    </div>
+    <div class="coop-card">
+      <h5><span class="zh">长期维保服务合约</span><span class="en">Long-Term Maintenance Service Contract</span><span class="id">Kontrak Layanan Perawatan Jangka Panjang</span></h5>
+      <ul>
+        <li><span class="zh">维保合约按年度签订，覆盖已交付设备的预防性维护、故障修复与软件升级。</span><span class="en">Maintenance contracts are signed annually, covering preventive maintenance, fault repair and software upgrades for delivered equipment.</span><span class="id">Kontrak perawatan ditandatangani tahunan, mencakup perawatan preventif, perbaikan kesalahan &amp; upgrade software untuk peralatan yang disampaikan.</span></li>
+        <li><span class="zh">PolarRay 建立中国→印尼的备件快速通道，关键备件48小时内可发运。</span><span class="en">PolarRay establishes a China→Indonesia rapid spare parts channel, with key spares shippable within 48 hours.</span><span class="id">PolarRay membangun saluran suku cadang cepat China→Indonesia, dengan suku cadang kunci dapat dikirim dalam 48 jam.</span></li>
+        <li><span class="zh">本地维保团队由 Pak Sumar 的公司组建，PolarRay 负责远程技术支持与高级故障诊断。</span><span class="en">The local maintenance team is organized by Pak Sumar&#x27;s company, with PolarRay responsible for remote technical support and advanced fault diagnosis.</span><span class="id">Tim perawatan lokal diorganisir oleh perusahaan Pak Sumar, dengan PolarRay bertanggung jawab untuk dukungan teknis remote &amp; diagnosis kesalahan tingkat lanjut.</span></li>
+      </ul>
+    </div>
+    <div class="coop-card">
+      <h5><span class="zh">市场推广与品牌共建</span><span class="en">Market Promotion &amp; Brand Co-Building</span><span class="id">Promosi Pasar &amp; Pembangunan Merek Bersama</span></h5>
+      <ul>
+        <li><span class="zh">PolarRay 协助 Pak Sumar 的公司参与印尼国内外应急展会、论坛与行业活动。</span><span class="en">PolarRay assists Pak Sumar&#x27;s company in participating in Indonesia and international emergency exhibitions, forums and industry events.</span><span class="id">PolarRay membantu perusahaan Pak Sumar berpartisipasi dalam pameran darurat, forum &amp; acara industri di Indonesia &amp; internasional.</span></li>
+        <li><span class="zh">双方共建品牌资料库：产品手册、案例视频、技术白皮书，全部提供三语版本。</span><span class="en">Both parties co-build a brand asset library: product manuals, case videos, technical white papers, all provided in trilingual versions.</span><span class="id">Kedua belah pihak membangun perpustakaan aset merek bersama: manual produk, video kasus, white paper teknis, semua disediakan dalam versi tiga bahasa.</span></li>
+        <li><span class="zh">PolarRay 提供中国应急管理部门的成功案例作为参考，帮助 Pak Sumar 的公司进行政府汇报与项目申报。</span><span class="en">PolarRay provides successful case studies from Chinese emergency management agencies as reference to help Pak Sumar&#x27;s company with government reporting and project applications.</span><span class="id">PolarRay menyediakan studi kasus sukses dari badan manajemen darurat China sebagai referensi untuk membantu perusahaan Pak Sumar dengan pelaporan pemerintah &amp; aplikasi proyek.</span></li>
+      </ul>
+    </div>
+    <div class="coop-card">
+      <h5><span class="zh">知识产权与保密条款</span><span class="en">IP &amp; Confidentiality</span><span class="id">Kekayaan Intelektual &amp; Kerahasiaan</span></h5>
+      <ul>
+        <li><span class="zh">PolarRay 确保所有供应设备拥有合法知识产权，不涉及专利侵权。</span><span class="en">PolarRay ensures all supplied equipment has legitimate intellectual property rights and does not involve patent infringement.</span><span class="id">PolarRay memastikan semua peralatan yang disediakan memiliki hak kekayaan intelektual yang sah &amp; tidak melibatkan pelanggaran paten.</span></li>
+        <li><span class="zh">双方对合作过程中获取的商业信息、政府关系资源与技术资料负有保密义务。</span><span class="en">Both parties are obligated to keep confidential business information, government relationship resources and technical materials obtained during cooperation.</span><span class="id">Kedua belah pihak berkewajiban menjaga kerahasiaan informasi bisnis, sumber daya relasi pemerintah &amp; materi teknis yang diperoleh selama kerja sama.</span></li>
+        <li><span class="zh">未经对方书面同意，任何一方不得向第三方披露合作细节与商业条款。</span><span class="en">Without the other party&#x27;s written consent, neither party may disclose cooperation details and commercial terms to third parties.</span><span class="id">Tanpa persetujuan tertulis pihak lain, tidak ada pihak yang boleh mengungkap detail kerja sama &amp; syarat komersial ke pihak ketiga.</span></li>
+      </ul>
+    </div>
+    <div class="coop-card">
+      <h5><span class="zh">争议解决与合同期限</span><span class="en">Dispute Resolution &amp; Contract Term</span><span class="id">Penyelesaian Sengketa &amp; Masa Kontrak</span></h5>
+      <ul>
+        <li><span class="zh">合同争议优先通过友好协商解决；协商不成，提交新加坡国际仲裁中心(SIAC)仲裁。</span><span class="en">Contract disputes are first resolved through amicable consultation; if consultation fails, submit to Singapore International Arbitration Centre (SIAC).</span><span class="id">Sengketa kontrak pertama diselesaikan melalui konsultasi damai; jika gagal, diajukan ke Singapore International Arbitration Centre (SIAC).</span></li>
+        <li><span class="zh">初始服务合同期限为3年，期满前6个月双方协商续约事宜。</span><span class="en">The initial service contract term is 3 years, with both parties negotiating renewal 6 months before expiration.</span><span class="id">Masa kontrak layanan awal adalah 3 tahun, dengan kedua belah pihak bernegosiasi perpanjangan 6 bulan sebelum kedaluwarsa.</span></li>
+        <li><span class="zh">任何一方提前终止合同，需提前90天书面通知，并完成已交付设备的维保交接。</span><span class="en">Either party terminating the contract early must provide 90 days written notice and complete the maintenance handover of delivered equipment.</span><span class="id">Pihak mana pun yang mengakhiri kontrak lebih awal harus memberikan pemberitahuan tertulis 90 hari &amp; menyelesaikan serah terima perawatan peralatan yang disampaikan.</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="strong-box" style="margin-top:20px">
+    <h4><span class="zh">合作模式总结</span><span class="en">Cooperation Model Summary</span><span class="id">Ringkasan Model Kerja Sama</span></h4>
+    <p><span class="zh">PolarRay = <b>中国供应链 + 技术服务商</b>（不持股、不控股）<br>Pak Sumar 的公司 = <b>印尼本地主体 + 市场运营方</b>（负责政府关系、资质、销售、本地团队）<br>双方通过<b>服务合同 + 供货协议</b>建立长期商业关系，利益共享、风险共担。</span><span class="en">PolarRay = <b>China supply chain + technology service provider</b> (no equity, no control)<br>Pak Sumar&#x27;s company = <b>Indonesia local entity + market operator</b> (responsible for government relations, qualifications, sales, local team)<br>Both parties establish a long-term commercial relationship through <b>service contracts + supply agreements</b>, sharing benefits and risks.</span><span class="id">PolarRay = <b>Rantai pasok China + penyedia layanan teknologi</b> (tanpa saham, tanpa kontrol)<br>Perusahaan Pak Sumar = <b>Entitas lokal Indonesia + operator pasar</b> (bertanggung jawab untuk relasi pemerintah, kualifikasi, penjualan, tim lokal)<br>Kedua belah pihak membangun hubungan komersial jangka panjang melalui <b>kontrak layanan + perjanjian pasokan</b>, berbagi manfaat &amp; risiko.</span></p>
+  </div>
+</div></section>
+<section id="sales"><div class="wrap">
+  <div class="sec-head"><span class="no">11</span><h2><span class="zh">销售预估（按解决方案单元）</span><span class="en">Sales Forecast (by Solution Unit)</span><span class="id">Perkiraan Penjualan (berdasarkan Unit Solusi)</span></h2></div>
+  <p class="sec-sub"><span class="zh">以成套单元为售卖标的的三年情景估算，并体现培训与维保的经常性收入。</span><span class="en">A 3-year scenario estimate by bundled units, reflecting recurring training &amp; maintenance revenue.</span><span class="id">Estimasi skenario 3 tahun berdasarkan unit paket, mencerminkan pendapatan berulang pelatihan &amp; perawatan.</span></p>
+  <div class="tablewrap"><table class="t-sales">
+    <thead><tr><th><span class="zh">年度</span><span class="en">Year</span><span class="id">Tahun</span></th><th><span class="zh">售出解决方案单元</span><span class="en">Solution Units Sold</span><span class="id">Unit Solusi Terjual</span></th><th class="num"><span class="zh">装备方案(万元)</span><span class="en">Equipment (¥10k)</span><span class="id">Peralatan (¥10k)</span></th><th class="num"><span class="zh">培训(万元)</span><span class="en">Training (¥10k)</span><span class="id">Pelatihan (¥10k)</span></th><th class="num"><span class="zh">维保&amp;升级(万元)</span><span class="en">Maint.&amp;Upgrade (¥10k)</span><span class="id">Peraw.&amp;Upgrade (¥10k)</span></th><th class="num"><span class="zh">合计(万元)</span><span class="en">Total (¥10k)</span><span class="id">Total (¥10k)</span></th></tr></thead>
+    <tbody>
+      <tr><td><b><span class="zh">第1年 · 试点起步</span><span class="en">Year 1 · Pilot</span><span class="id">Tahun 1 · Pilot</span></b></td><td><span class="zh">2x班组包 + 1x移动单元</span><span class="en">2x Squad + 1x Mobile</span><span class="id">2x Paket Regu + 1x Unit Mobile</span></td><td class="num">1,140</td><td class="num">137</td><td class="num">57</td><td class="num"><b>1,334</b></td></tr>
+      <tr><td><b><span class="zh">第2年 · 区域扩张</span><span class="en">Year 2 · Regional scale</span><span class="id">Tahun 2 · Skala regional</span></b></td><td><span class="zh">5x班组 + 2x移动 + 1x区域中队</span><span class="en">5x Squad + 2x Mobile + 1x Regional</span><span class="id">5x Regu + 2x Mobile + 1x Regional</span></td><td class="num">7,900</td><td class="num">948</td><td class="num">171</td><td class="num"><b>9,019</b></td></tr>
+      <tr><td><b><span class="zh">第3年 · 体系复制</span><span class="en">Year 3 · System replication</span><span class="id">Tahun 3 · Replikasi sistem</span></b></td><td><span class="zh">8x班组 + 4x移动 + 2x中队 + 1x省级体系</span><span class="en">8x Squad + 4x Mobile + 2x Regional + 1x Provincial</span><span class="id">8x Regu + 4x Mobile + 2x Regional + 1x Provinsi</span></td><td class="num">27,560</td><td class="num">3,307</td><td class="num">1,356</td><td class="num"><b>32,223</b></td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="2"><span class="zh">三年累计</span><span class="en">3-year cumulative</span><span class="id">3 tahun kumulatif</span></td><td class="num">36,600</td><td class="num">4,392</td><td class="num">1,584</td><td class="num">42,576</td></tr></tfoot>
+  </table></div>
+  <div class="grid g3" style="margin-top:20px">
+    <div class="card stat"><div class="lab" style="margin:0 0 6px"><span class="zh">三年累计收入</span><span class="en">3-yr cumulative revenue</span><span class="id">Pendapatan kumulatif 3 th</span></div><div class="big" style="font-size:24px"><span class="zh">≈ ¥4.26亿</span><span class="en">≈ ¥426M</span><span class="id">≈ ¥426M</span></div><div class="lab"><span class="zh">情景估算</span><span class="en">Scenario est.</span><span class="id">Estimasi skenario</span></div></div>
+    <div class="card stat"><div class="lab" style="margin:0 0 6px"><span class="zh">培训+维保累计</span><span class="en">Training+maint. cumulative</span><span class="id">Pelatihan+perawatan kumulatif</span></div><div class="big" style="font-size:24px;color:var(--green)"><span class="zh">¥5,976万</span><span class="en">≈ ¥60M</span><span class="id">≈ ¥60M</span></div><div class="lab"><span class="zh">经常性收入，逐年走高</span><span class="en">Recurring, rising yearly</span><span class="id">Pendapatan berulang, naik tahunan</span></div></div>
+    <div class="card stat"><div class="lab" style="margin:0 0 6px"><span class="zh">收入结构</span><span class="en">Revenue mix</span><span class="id">Campuran pendapatan</span></div><div class="big" style="font-size:18px"><span class="zh">装备(一次性)</span><span class="en">Equipment (one-off)</span><span class="id">Peralatan (sekali)</span><br>+<span class="zh">培训&amp;维保(经常性)</span><span class="en">Training&amp;O&amp;M (recurring)</span><span class="id">Pelatihan&amp;perawatan (berulang)</span></div><div class="lab"><span class="zh">成熟期服务占比持续提升</span><span class="en">Service share keeps rising at maturity</span><span class="id">Pangsa layanan terus naik saat matang</span></div></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:14px"><span class="zh">说明：以上为基于设定单元价格与售出节奏的<b>情景估算</b>（单位：万元人民币），用于规划与沟通，实际以采购合同与供应商报价为准。维保按累计装机基数测算，随装机量增长持续累积。</span><span class="en">Note: figures are a <b>scenario estimate</b> (unit: ¥10k) based on assumed unit prices and sales pace, for planning/communication; actuals per contracts &amp; supplier quotes. Maintenance is computed on the cumulative installed base and compounds over time.</span><span class="id">Catatan: angka adalah <b>estimasi skenario</b> (unit: ¥10k) berdasarkan harga unit &amp; ritme penjualan yang diasumsikan, untuk perencanaan/komunikasi; aktual sesuai kontrak &amp; penawaran pemasok. Perawatan dihitung berdasarkan basis terpasang kumulatif &amp; berkembang dari waktu ke waktu.</span></p>
+</div></section>
+<section id="model"><div class="wrap">
+  <div class="sec-head"><span class="no">12</span><h2><span class="zh">商业模式与收入来源</span><span class="en">Business Model &amp; Revenue</span><span class="id">Model Bisnis &amp; Sumber Pendapatan</span></h2></div>
+  <p class="sec-sub"><span class="zh">收入向服务倾斜：一次性方案交付 + 经常性培训与维保升级。</span><span class="en">Revenue tilts to service: one-off solution delivery + recurring training &amp; maintenance/upgrade.</span><span class="id">Pendapatan condong ke layanan: pengiriman solusi sekali + pelatihan berulang &amp; perawatan/upgrade.</span></p>
+  <div class="grid g3">
+    <div class="card stat"><div class="big" style="font-size:20px"><span class="zh">① 方案交付</span><span class="en">① Solution delivery</span><span class="id">① Pengiriman solusi</span></div><div class="lab" style="margin-top:10px"><span class="zh">成套应急单元的集成与交付，获取方案价差（一次性）。</span><span class="en">Integration &amp; delivery of bundled units; solution margin (one-off).</span><span class="id">Integrasi &amp; pengiriman unit paket; margin solusi (sekali).</span></div></div>
+    <div class="card stat"><div class="big" style="font-size:20px;color:var(--green)"><span class="zh">② 培训赋能</span><span class="en">② Training</span><span class="id">② Pelatihan</span></div><div class="lab" style="margin-top:10px"><span class="zh">操作/教官/维修培训与复训，随队伍扩张持续产生。</span><span class="en">Operator/instructor/maintenance training &amp; recert; grows with the force.</span><span class="id">Pelatihan operator/instruktur/perawatan &amp; resertifikasi; tumbuh dengan kekuatan.</span></div></div>
+    <div class="card stat"><div class="big" style="font-size:20px;color:var(--blue)"><span class="zh">③ 维保与升级</span><span class="en">③ Maintenance &amp; upgrade</span><span class="id">③ Perawatan &amp; upgrade</span></div><div class="lab" style="margin-top:10px"><span class="zh">年度维保、备件、软硬件升级——经常性、高毛利、强绑定。</span><span class="en">Annual maintenance, spares, SW/HW upgrade — recurring, high-margin, sticky.</span><span class="id">Perawatan tahunan, suku cadang, upgrade SW/HW — berulang, margin tinggi, lengket.</span></div></div>
+  </div>
+  <p style="margin-top:16px"><span class="zh">Pak Sumar 的公司作为印尼本地主体统一承接采购与服务，PolarRay 通过服务合同获取供应链服务费与技术支持费。装机基数越大，培训与维保的经常性收入越稳定，形成竞争壁垒。</span><span class="en">Pak Sumar&#x27;s company, as the Indonesian local entity, takes procurement &amp; service contracts; PolarRay obtains supply chain service fees and technical support fees through service contracts. The larger the installed base, the more stable the recurring training &amp; maintenance revenue — a competitive moat.</span><span class="id">Perusahaan Pak Sumar, sebagai entitas lokal Indonesia, mengambil kontrak pengadaan &amp; layanan; PolarRay memperoleh biaya layanan rantai pasok &amp; biaya dukungan teknis melalui kontrak layanan. Semakin besar basis terpasang, semakin stabil pendapatan berulang pelatihan &amp; perawatan — parit kompetitif.</span></p>
+</div></section>
+<section id="risk"><div class="wrap">
+  <div class="sec-head"><span class="no">13</span><h2><span class="zh">主要风险与对策</span><span class="en">Key Risks &amp; Mitigations</span><span class="id">Risiko Utama &amp; Mitigasi</span></h2></div>
+  <p class="sec-sub"><span class="zh">提前识别，逐项设防。</span><span class="en">Identify early, address each.</span><span class="id">Identifikasi dini, atasi satu per satu.</span></p>
+  <div class="grid g2">
+    <div class="card risk">
+      <h4><span class="ic"><span class="zh">政</span><span class="en">P</span><span class="id">P</span></span><span class="zh">政府采购周期与合规</span><span class="en">Procurement cycle &amp; compliance</span><span class="id">Siklus pengadaan &amp; kepatuhan</span></h4>
+      <p><span class="zh">流程长、合规要求高</span><span class="en">Long cycle, high compliance</span><span class="id">Siklus panjang, kepatuhan tinggi</span> <span class="sol"><span class="zh">对策：</span><span class="en">Fix: </span><span class="id">Perbaikan: </span></span><span class="zh">Pak Sumar 的公司主导资质与招投标，PolarRay 提供技术与方案支持</span><span class="en">Pak Sumar&#x27;s company leads qualification &amp; bidding; PolarRay provides technical &amp; solution support</span><span class="id">Perusahaan Pak Sumar memimpin kualifikasi &amp; tender; PolarRay menyediakan dukungan teknis &amp; solusi</span></p>
+    </div>
+    <div class="card risk">
+      <h4><span class="ic"><span class="zh">代</span><span class="en">A</span><span class="id">A</span></span><span class="zh">供应商代理权稳定性</span><span class="en">Agency-rights stability</span><span class="id">Stabilitas hak agen</span></h4>
+      <p><span class="zh">代理被绕开则价值受损</span><span class="en">Value erodes if bypassed</span><span class="id">Nilai berkurang jika dilewati</span> <span class="sol"><span class="zh">对策：</span><span class="en">Fix: </span><span class="id">Perbaikan: </span></span><span class="zh">签独家/区域代理+最低采购，绑定演示赞助</span><span class="en">Exclusive/regional agency + MOQ; tie to demo sponsorship</span><span class="id">Agen eksklusif/regional + MOQ; ikat ke sponsor demo</span></p>
+    </div>
+    <div class="card risk">
+      <h4><span class="ic"><span class="zh">汇</span><span class="en">F</span><span class="id">F</span></span><span class="zh">汇率与回款风险</span><span class="en">FX &amp; payment risk</span><span class="id">Risiko FX &amp; pembayaran</span></h4>
+      <p><span class="zh">印尼盾波动、账期长</span><span class="en">Rupiah volatility, long terms</span><span class="id">Volatilitas rupiah, syarat panjang</span> <span class="sol"><span class="zh">对策：</span><span class="en">Fix: </span><span class="id">Perbaikan: </span></span><span class="zh">计价货币约定、分期+预付款</span><span class="en">Currency clause, milestones + deposit</span><span class="id">Klausul mata uang, tahapan + deposit</span></p>
+    </div>
+    <div class="card risk">
+      <h4><span class="ic"><span class="zh">服</span><span class="en">S</span><span class="id">S</span></span><span class="zh">本地服务能力</span><span class="en">Local service capacity</span><span class="id">Kemampuan layanan lokal</span></h4>
+      <p><span class="zh">售后跟不上影响复购</span><span class="en">Weak after-sales hurts repeat</span><span class="id">Purna jual lemah merusak pengulangan</span> <span class="sol"><span class="zh">对策：</span><span class="en">Fix: </span><span class="id">Perbaikan: </span></span><span class="zh">PolarRay 培训+备件前置，Pak Sumar 的公司建本地团队</span><span class="en">PolarRay training + spares forward-stocked; Pak Sumar&#x27;s company builds local team</span><span class="id">Pelatihan PolarRay + suku cadang stok awal; perusahaan Pak Sumar membangun tim lokal</span></p>
+    </div>
+    <div class="card risk">
+      <h4><span class="ic"><span class="zh">证</span><span class="en">C</span><span class="id">C</span></span><span class="zh">认证准入周期</span><span class="en">Certification cycle</span><span class="id">Siklus sertifikasi</span></h4>
+      <p><span class="zh">SNI/进口许可耗时</span><span class="en">SNI/import permits take time</span><span class="id">SNI/izin impor memakan waktu</span> <span class="sol"><span class="zh">对策：</span><span class="en">Fix: </span><span class="id">Perbaikan: </span></span><span class="zh">Pak Sumar 的公司提前启动认证，PolarRay 协调中方工厂提供型式试验</span><span class="en">Pak Sumar&#x27;s company initiates certification early; PolarRay coordinates Chinese factory for type testing</span><span class="id">Perusahaan Pak Sumar memulai sertifikasi dini; PolarRay mengkoordinasikan pabrik China untuk uji tipe</span></p>
+    </div>
+    <div class="card risk">
+      <h4><span class="ic"><span class="zh">竞</span><span class="en">R</span><span class="id">R</span></span><span class="zh">国际竞争对手</span><span class="en">International competitors</span><span class="id">Pesaing internasional</span></h4>
+      <p><span class="zh">欧美日品牌在印尼有既有优势</span><span class="en">EU/US/JP brands have incumbent advantages</span><span class="id">Merek EU/US/JP memiliki keunggulan mapan</span> <span class="sol"><span class="zh">对策：</span><span class="en">Fix: </span><span class="id">Perbaikan: </span></span><span class="zh">PolarRay 提供性价比+本地化服务+GTG 背书的三重优势</span><span class="en">PolarRay offers cost-performance + localized service + GTG backing triple advantage</span><span class="id">PolarRay menawarkan triple advantage: cost-performance + layanan lokal + dukungan GTG</span></p>
+    </div>
+  </div>
+</div></section>
+<section id="roadmap"><div class="wrap">
+  <div class="sec-head"><span class="no">14</span><h2><span class="zh">近期行动与里程碑</span><span class="en">Near-Term Actions &amp; Milestones</span><span class="id">Aksi &amp; Tonggak Jangka Dekat</span></h2></div>
+  <p class="sec-sub"><span class="zh">从现在到首单落地。</span><span class="en">From now to the first order.</span><span class="id">Dari sekarang hingga pesanan pertama.</span></p>
+  <div class="flow">
+    <div class="step"><div class="n">1</div><h4><span class="zh">锁定代理权</span><span class="en">Lock agency rights</span><span class="id">Kunci hak agen</span></h4><p><span class="zh">PolarRay 谈定核心供应商代理</span><span class="en">PolarRay secures key agencies</span><span class="id">PolarRay mengamankan agen inti</span></p></div>
+    <div class="step"><div class="n">2</div><h4><span class="zh">敲定合作框架</span><span class="en">Agree framework</span><span class="id">Sepakati kerangka</span></h4><p><span class="zh">与 PHAS 确认服务合作框架</span><span class="en">JV cooperation framework with PHAS</span><span class="id">Kerangka kerja sama layanan dengan PHAS</span></p></div>
+    <div class="step"><div class="n">3</div><h4><span class="zh">筹备交流会</span><span class="en">Prep forum</span><span class="id">Persiapkan forum</span></h4><p><span class="zh">邀约名单、演示、行程与预算</span><span class="en">List, demo, itinerary &amp; budget</span><span class="id">Daftar, demo, itinerary &amp; anggaran</span></p></div>
+    <div class="step"><div class="n">4</div><h4><span class="zh">举办交流会</span><span class="en">Hold forum</span><span class="id">Selenggarakan forum</span></h4><p><span class="zh">现场演示，达成 MoU</span><span class="en">Live demo, reach MoU</span><span class="id">Demo langsung, capai MoU</span></p></div>
+    <div class="step"><div class="n">5</div><h4><span class="zh">认证→首单</span><span class="en">Cert -&gt; first order</span><span class="id">Sertifikasi -&gt; pesanan pertama</span></h4><p><span class="zh">认证准入、首单交付</span><span class="en">Certify, first delivery</span><span class="id">Sertifikasi, pengiriman pertama</span></p></div>
+  </div>
+</div></section>
+<footer><div class="wrap">
+  PolarRay x PHAS · <span class="zh">印尼应急救援业务计划（中英印尼三语版）· 2026</span><span class="en">Indonesia Emergency-Rescue Business Plan (Trilingual) · 2026</span><span class="id">Rencana Bisnis Penyelamatan Darurat Indonesia (Tiga Bahasa) · 2026</span>
+  <div class="disc"><span class="zh">本文档为业务规划用途。PolarRay 作为服务方不直接持股，所有合作收益通过服务合同与供货协议实现。产品图片与链接来自各品牌官方网站，版权归各品牌方所有，仅用于方案说明；单元投资与销售预估为基于设定规模与公开信息的情景估算，实际以供应商报价与采购合同为准；合作与服务安排以双方最终协议为准。</span><span class="en">For business-planning purposes. PolarRay serves as a service partner without equity stake; all commercial returns are realized through service contracts and supply agreements. Product images/links are from each brand&#x27;s official site, copyrights belong to the respective brands, used for illustration only; unit investment and sales figures are scenario estimates based on assumed scale &amp; public info — actuals per supplier quotes &amp; contracts; cooperation and service arrangements per the parties&#x27; final agreement.</span><span class="id">Untuk tujuan perencanaan bisnis. PolarRay berperan sebagai mitra layanan tanpa saham; semua pendapatan komersial direalisasikan melalui kontrak layanan &amp; perjanjian pasokan. Gambar/link produk dari situs resmi masing-masing merek, hak cipta milik merek terkait, digunakan hanya untuk ilustrasi; investasi unit &amp; angka penjualan adalah estimasi skenario berdasarkan skala &amp; info publik yang diasumsikan — aktual sesuai penawaran pemasok &amp; kontrak; pengaturan kerja sama &amp; layanan sesuai perjanjian final kedua belah pihak.</span></div>
+</div></footer>
+<script>
+function setLang(l){
+  var b=document.body;
+  b.classList.remove('lang-zh','lang-en','lang-id');
+  b.classList.add('lang-'+l);
+  document.documentElement.lang=l==='zh'?'zh-CN':(l==='id'?'id':'en');
+  document.querySelectorAll('.langbtn').forEach(function(btn){btn.classList.remove('active');});
+  document.getElementById('btn-'+l).classList.add('active');
+  try{localStorage.setItem('polarray_lang',l);}catch(e){}
+}
+(function(){try{var s=localStorage.getItem('polarray_lang');
+if(s==='en'||s==='id'){setLang(s);}}catch(e){}})();
+</script>
+</body>
+</html>
